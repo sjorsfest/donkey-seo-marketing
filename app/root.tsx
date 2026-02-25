@@ -6,9 +6,18 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-
+import { SupportWidget } from "./components/supportWidget/supportWidget";
+import { AppConfigProvider } from "./context/appConfig";
 import type { Route } from "./+types/root";
 import "./app.css";
+
+
+export function loader() {
+  return {
+    appUrl: process.env.APP_URL ?? "",
+  };
+}
+
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -36,14 +45,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         {children}
         <ScrollRestoration />
+        <SupportWidget accountId="cmko8jp0i0000lo09ghgzcul5" />
         <Scripts />
       </body>
     </html>
   );
 }
 
-export default function App() {
-  return <Outlet />;
+export default function App({ loaderData }: Route.ComponentProps) {
+  return (
+    <AppConfigProvider appUrl={loaderData.appUrl}>
+      <Outlet />
+    </AppConfigProvider>
+  )
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

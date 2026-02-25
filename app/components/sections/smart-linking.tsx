@@ -18,7 +18,7 @@ export function SmartLinking() {
                 Every article plugs into your site like it was always there
               </h2>
               <p className="text-lg text-muted-foreground">
-                Donkey SEO doesn't just write isolated articles — it reads your
+                Donkey SEO doesn't just write isolated articles: it reads your
                 existing sitemap and automatically interlinks new content with
                 the pages you already have.
               </p>

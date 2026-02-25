@@ -18,8 +18,7 @@ export function DiscoveryPipeline() {
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             A 7-step, AI-driven research engine that runs iteratively to find
-            the best content opportunities for your domain. This is what gets
-            customers excited — real automation.
+            the best content opportunities for your domain.
           </p>
         </FadeIn>
 
@@ -64,11 +63,19 @@ export function DiscoveryPipeline() {
               </div>
             </div>
 
-            {/* Bottom CTA */}
-            <div className="mt-12 p-6 bg-yellow-500/10 rounded-xl border-2 border-yellow-500/20 text-center">
-              <p className="text-foreground font-medium">
-                🚀 Runs multiple iterations, gets smarter with each loop
-              </p>
+            {/* Iterative loop note — styled as the final timeline node */}
+            <div className="relative pl-16 mt-8">
+              <div className="absolute left-0 w-12 h-12 rounded-full bg-teal-300/20 border-4 border-card flex items-center justify-center shadow-lg">
+                <span className="text-lg">🔄</span>
+              </div>
+              <div className="bg-muted-bg rounded-xl p-4 border-2 border-border">
+                <h4 className="font-display font-bold text-foreground mb-1">
+                  Iterates &amp; improves automatically
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  The pipeline runs multiple passes — each iteration refines its research, so every loop delivers sharper, higher-confidence keyword opportunities.
+                </p>
+              </div>
             </div>
           </Card>
         </FadeIn>

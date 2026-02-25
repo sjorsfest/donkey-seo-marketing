@@ -7,8 +7,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
 import { pricingPlans } from "~/data/pricing";
+import { useAppConfig } from "~/context/appConfig";
 
 export function Pricing() {
+  const { appUrl } = useAppConfig();
   const [isYearly, setIsYearly] = useState(false);
 
   return (
@@ -44,7 +46,7 @@ export function Pricing() {
             >
               Yearly
               <span className="ml-2 text-xs bg-teal-400 text-white px-2 py-0.5 rounded-full">
-                Save 22%
+                Save 32%
               </span>
             </button>
           </div>
@@ -126,8 +128,9 @@ export function Pricing() {
                     className="w-full mt-auto"
                     variant={plan.highlighted ? "default" : "secondary"}
                     size="lg"
+                    asChild
                   >
-                    {plan.cta}
+                    <a href={appUrl}>{plan.cta}</a>
                   </Button>
                 </CardContent>
               </Card>

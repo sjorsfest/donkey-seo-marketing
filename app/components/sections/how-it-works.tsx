@@ -23,7 +23,7 @@ export function HowItWorks() {
     },
     {
       emoji: "✍️",
-      title: "Content arrives — ready to publish",
+      title: "Content arrives ready to publish",
       description: "Articles flow to your CMS via API. Review what you want. Publish.",
     },
   ];

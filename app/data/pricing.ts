@@ -30,7 +30,7 @@ export const pricingPlans = [
   },
   {
     name: "Growth",
-    price: { monthly: 149, yearly: 1400 },
+    price: { monthly: 149, yearly: 1350 },
     description: "For small teams",
     features: [
       "100 articles / month",
@@ -45,7 +45,7 @@ export const pricingPlans = [
   },
   {
     name: "Agency",
-    price: { monthly: 399, yearly: 3750 },
+    price: { monthly: 399, yearly: 3700 },
     description: "For agencies",
     features: [
       "350 articles / month",

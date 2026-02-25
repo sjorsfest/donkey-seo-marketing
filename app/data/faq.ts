@@ -2,7 +2,7 @@ export const faqItems = [
   {
     question: "What do I get with the free plan?",
     answer:
-      "5 publish-ready articles — lifetime. Full access to discovery, content creation, and calendar. No credit card required. Perfect for testing the quality before committing.",
+      "5 publish-ready articles. Full access to discovery, content creation, and calendar. No credit card required. Perfect for testing the quality before committing.",
   },
   {
     question: "How does Donkey SEO write articles?",
@@ -22,7 +22,7 @@ export const faqItems = [
   {
     question: 'What does "hands-off" really mean?',
     answer:
-      "You set up your project once — domain, strategy, authors. From there, Donkey SEO runs keyword discovery, generates articles, and delivers them to your CMS automatically. You only step in to review what you want.",
+      "You set up your project once: domain, strategy, authors. From there, Donkey SEO runs keyword discovery, generates articles, and delivers them to your CMS automatically. You only step in to review what you want.",
   },
   {
     question: "Can I target different countries?",
@@ -32,7 +32,7 @@ export const faqItems = [
   {
     question: "Does Donkey SEO add internal links to my articles?",
     answer:
-      "Yes! Donkey SEO reads your existing sitemap and automatically adds contextual internal links from new articles to relevant pages on your site. It strengthens your topical authority and site architecture — without you lifting a finger.",
+      "Yes! Donkey SEO reads your existing sitemap and automatically adds contextual internal links from new articles to relevant pages on your site. It strengthens your topical authority and site architecture (without you lifting a finger).",
   },
   {
     question: "Can I cancel anytime?",

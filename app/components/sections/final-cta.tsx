@@ -4,8 +4,11 @@ import { FadeIn } from "~/components/motion/fade-in";
 import { Float } from "~/components/motion/float";
 import { Button } from "~/components/ui/button";
 import { Card } from "~/components/ui/card";
+import { useAppConfig } from "~/context/appConfig";
 
 export function FinalCTA() {
+  const { appUrl } = useAppConfig();
+
   return (
     <section className="py-20 relative overflow-hidden">
       <div className="section-container">
@@ -54,8 +57,11 @@ export function FinalCTA() {
                         size="xl"
                         variant="secondary"
                         className="bg-white hover:bg-white/90 shadow-[6px_6px_0_#1a1a1a] hover:shadow-[4px_4px_0_#1a1a1a]"
+                        asChild
                       >
-                        <span className="text-xl">Start free • 5 articles on us</span>
+                        <a href={appUrl}>
+                          <span className="text-xl">Start free • 5 articles on us</span>
+                        </a>
                     </Button>
 
 

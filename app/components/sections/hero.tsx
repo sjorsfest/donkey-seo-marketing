@@ -8,15 +8,18 @@ import { FadeIn } from "~/components/motion/fade-in";
 import { Float } from "~/components/motion/float";
 import { DashboardMockup } from "./dashboard-mockup";
 import { ArticleMockup } from "./article-mockup";
+import { useAppConfig } from "~/context/appConfig";
 
 export function Hero() {
+  const { appUrl } = useAppConfig();
+
   const variations = [
-    { text: "ships on autopilot", color: "#eab308" }, // yellow-500
-    { text: "brings you leads", color: "#06b6d4" }, // cyan-500
-    { text: "ranks page one", color: "#a855f7" }, // purple-500
-    { text: "builds authority", color: "#84cc16" }, // lime-500
-    { text: "grows traffic", color: "#f97316" }, // orange-500
-    { text: "drives revenue", color: "#ec4899" }, // pink-500
+    { text: "ships on autopilot", color: "#ffd641" }, // brand yellow
+    { text: "brings you leads", color: "#70ac96" }, // brand teal
+    { text: "ranks page one", color: "#ff8552" }, // warm coral (complements teal)
+    { text: "builds authority", color: "#5a9480" }, // deeper teal
+    { text: "grows traffic", color: "#f4a261" }, // golden (warm accent)
+    { text: "drives revenue", color: "#86c4ad" }, // light teal
   ];
 
   const [activeVariation, setActiveVariation] = useState(0);
@@ -36,14 +39,14 @@ export function Hero() {
   };
 
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden">
+    <section className="relative pt-44 pb-20 overflow-hidden">
       <div className="section-container">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <div className="space-y-8">
             <FadeIn direction="up" duration={0.6}>
               <Badge variant="promo" size="lg" className="mb-6">
-                ⚡ Automated from keyword to publish
+                ⚡ Hands-off organic growth
               </Badge>
               <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
                 <span className="text-outline-hero">SEO content</span> that
@@ -73,8 +76,8 @@ export function Hero() {
 
             <FadeIn direction="up" duration={0.6} delay={0.2}>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg">
-                  Start free • 5 articles on us
+                <Button size="lg" className="text-lg" asChild>
+                  <a href={appUrl}>Start free • 5 articles on us</a>
                 </Button>
                 <Button
                   size="lg"
