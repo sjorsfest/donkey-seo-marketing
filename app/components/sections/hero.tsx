@@ -46,7 +46,7 @@ export function Hero() {
           <div className="space-y-8">
             <FadeIn direction="up" duration={0.6}>
               <Badge variant="promo" size="lg" className="mb-6">
-                ⚡ Hands-off organic growth
+                ⚡ Hands-free organic growth
               </Badge>
               <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
                 <span className="text-outline-hero">SEO content</span> that
