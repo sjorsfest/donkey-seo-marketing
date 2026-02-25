@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
 import { FadeIn } from "~/components/motion/fade-in";
@@ -8,6 +10,24 @@ import { DashboardMockup } from "./dashboard-mockup";
 import { ArticleMockup } from "./article-mockup";
 
 export function Hero() {
+  const variations = [
+    { text: "ships on autopilot", color: "#eab308" }, // yellow-500
+    { text: "brings you leads", color: "#06b6d4" }, // cyan-500
+    { text: "ranks page one", color: "#a855f7" }, // purple-500
+    { text: "builds authority", color: "#84cc16" }, // lime-500
+    { text: "grows traffic", color: "#f97316" }, // orange-500
+    { text: "drives revenue", color: "#ec4899" }, // pink-500
+  ];
+
+  const [activeVariation, setActiveVariation] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveVariation((prev) => (prev + 1) % variations.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [variations.length]);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -26,8 +46,21 @@ export function Hero() {
                 ⚡ Automated from keyword to publish
               </Badge>
               <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
-                <span className="text-outline-hero">SEO content</span> that ships
-                on <span className="text-yellow-500">autopilot</span>
+                <span className="text-outline-hero">SEO content</span> that
+                <br />
+                <span className="relative inline-block min-w-[8ch]">
+                  <motion.span
+                    key={variations[activeVariation].text}
+                    initial={{ opacity: 0, y: 20, rotate: -2 }}
+                    animate={{ opacity: 1, y: 0, rotate: 0 }}
+                    exit={{ opacity: 0, y: -20, rotate: 2 }}
+                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    className="inline-block whitespace-nowrap text-outline"
+                    style={{ color: variations[activeVariation].color }}
+                  >
+                    {variations[activeVariation].text}
+                  </motion.span>
+                </span>
               </h1>
             </FadeIn>
 
@@ -70,11 +103,9 @@ export function Hero() {
             </FadeIn>
 
             {/* Dancing Article Mockup - Right Side */}
-            <FadeIn direction="right" duration={0.8} delay={0.4}>
               <Float y={12} duration={5} rotate={3} className="absolute -right-8 top-1/3 z-10 scale-[0.55]">
                 <ArticleMockup />
               </Float>
-            </FadeIn>
           </div>
         </div>
       </div>

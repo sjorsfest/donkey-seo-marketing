@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Card } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
 
@@ -12,7 +13,33 @@ export function ArticleMockup() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <Card className="w-full max-w-sm bg-white p-6 border-3 border-outline shadow-[6px_6px_0_#1a1a1a]">
+    <motion.div
+      initial={{ scale: 0.9, opacity: 0, rotate: -5 }}
+      animate={{
+        scale: 1,
+        opacity: 1,
+        rotate: [-3, 3, -3],
+      }}
+      transition={{
+        scale: { delay: 0.5, duration: 0.4 },
+        opacity: { delay: 0.5, duration: 0.4 },
+        rotate: {
+          duration: 2.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 0.5,
+        }
+      }}
+    >
+      <motion.div
+        animate={{ y: [0, -6, 0] }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        <Card className="w-full max-w-sm bg-white p-6 border-3 border-outline shadow-[6px_6px_0_#1a1a1a]">
       {/* Article Header */}
       <div className="mb-4">
         <Badge variant="teal" size="sm" className="mb-3">
@@ -79,5 +106,7 @@ export function ArticleMockup() {
         </Badge>
       </div>
     </Card>
+      </motion.div>
+    </motion.div>
   );
 }

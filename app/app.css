@@ -219,6 +219,18 @@
     0 3px 0 #1a1a1a;
 }
 
+.text-outline {
+  text-shadow:
+    -3px -3px 0 #1a1a1a,
+    3px -3px 0 #1a1a1a,
+    -3px 3px 0 #1a1a1a,
+    3px 3px 0 #1a1a1a,
+    -3px 0 0 #1a1a1a,
+    3px 0 0 #1a1a1a,
+    0 -3px 0 #1a1a1a,
+    0 3px 0 #1a1a1a;
+}
+
 /* Hover Lift Effect */
 .hover-lift {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
