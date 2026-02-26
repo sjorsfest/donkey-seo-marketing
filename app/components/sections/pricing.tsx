@@ -20,15 +20,15 @@ export function Pricing() {
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4">
             Pricing that scales with you
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
             Start free. No credit card required. Cancel anytime.
           </p>
 
           {/* Billing Toggle */}
-          <div className="inline-flex items-center gap-3 p-1 bg-card rounded-2xl border-2 border-outline shadow-sm">
+          <div className="inline-flex items-center gap-3 p-1 bg-card rounded-2xl border-2 border-outline shadow-[4px_4px_0_#1a1a1a]">
             <button
               onClick={() => setIsYearly(false)}
-              className={`px-6 py-2 rounded-xl font-semibold transition-all ${
+              className={`px-8 py-3 rounded-xl font-semibold transition-all ${
                 !isYearly
                   ? "bg-yellow-500 text-foreground"
                   : "text-muted-foreground hover:text-foreground"
@@ -38,7 +38,7 @@ export function Pricing() {
             </button>
             <button
               onClick={() => setIsYearly(true)}
-              className={`px-6 py-2 rounded-xl font-semibold transition-all ${
+              className={`px-8 py-3 rounded-xl font-semibold transition-all ${
                 isYearly
                   ? "bg-yellow-500 text-foreground"
                   : "text-muted-foreground hover:text-foreground"
@@ -62,8 +62,8 @@ export function Pricing() {
                 variant={plan.highlighted ? "elevated" : "default"}
               >
                 {plan.badge && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge variant="promo">{plan.badge}</Badge>
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                    <Badge variant="promo" size="lg" className="shadow-[0_0_20px_rgba(255,214,65,0.4)]">{plan.badge}</Badge>
                   </div>
                 )}
 
@@ -126,11 +126,11 @@ export function Pricing() {
                   {/* CTA Button */}
                   <Button
                     className="w-full mt-auto"
-                    variant={plan.highlighted ? "default" : "secondary"}
+                    variant={plan.highlighted ? "gradient" : "secondary"}
                     size="lg"
                     asChild
                   >
-                    <a href={appUrl}>{plan.cta}</a>
+                    <a href={appUrl}>{plan.cta} →</a>
                   </Button>
                 </CardContent>
               </Card>

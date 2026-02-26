@@ -17,23 +17,28 @@ export function FAQ() {
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4">
             Frequently asked questions
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground">
             Everything you need to know about Donkey SEO
           </p>
         </FadeIn>
 
         <FadeIn delay={0.2}>
-          <div className="bg-card rounded-2xl border-2 border-outline shadow-lg p-6">
-            <Accordion type="single" collapsible className="w-full">
+          <div className="space-y-3">
+            <Accordion type="single" collapsible className="w-full space-y-3">
               {faqItems.map((item, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-left font-display font-bold text-foreground">
-                    {item.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
-                    {item.answer}
-                  </AccordionContent>
-                </AccordionItem>
+                <div
+                  key={index}
+                  className="bg-muted-bg rounded-xl p-4 border-2 border-border hover:border-teal-300 transition-colors"
+                >
+                  <AccordionItem value={`item-${index}`} className="border-0">
+                    <AccordionTrigger className="text-left font-display font-bold text-foreground text-lg leading-relaxed hover:no-underline">
+                      {item.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground leading-relaxed">
+                      {item.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                </div>
               ))}
             </Accordion>
           </div>

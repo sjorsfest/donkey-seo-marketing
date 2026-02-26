@@ -4,7 +4,7 @@ export const pricingPlans = [
     price: { monthly: 0, yearly: 0 },
     description: "Try Donkey SEO risk-free",
     features: [
-      "5 articles (lifetime)",
+      "3 articles (lifetime)",
       "1 project (domain)",
       "Full access to discovery",
       "Publishing calendar",

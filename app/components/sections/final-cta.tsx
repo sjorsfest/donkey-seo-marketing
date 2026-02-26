@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { FadeIn } from "~/components/motion/fade-in";
 import { Float } from "~/components/motion/float";
 import { Button } from "~/components/ui/button";
@@ -13,7 +14,7 @@ export function FinalCTA() {
     <section className="py-20 relative overflow-hidden">
       <div className="section-container">
         <FadeIn>
-          <Card className="relative max-w-5xl mx-auto p-12 md:p-16 bg-gradient-to-br from-teal-400 via-teal-500 to-teal-600 border-4 border-outline shadow-[12px_12px_0_#1a1a1a] overflow-hidden">
+          <Card className="relative max-w-5xl mx-auto p-6 sm:p-8 md:p-12 lg:p-16 bg-gradient-to-br from-teal-400 via-teal-500 to-teal-600 border-4 border-outline shadow-[12px_12px_0_#1a1a1a] overflow-hidden">
             {/* Animated Background Elements */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-10 left-10 w-20 h-20 bg-white rounded-full blur-xl animate-pulse" />
@@ -34,7 +35,7 @@ export function FinalCTA() {
                   </div>
 
                   {/* Headline */}
-                  <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
+                  <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
                     Ready to ship{" "}
                     <span className="text-outline-lg text-foreground text-primary">
                       SEO content
@@ -43,30 +44,33 @@ export function FinalCTA() {
                   </h2>
 
                   {/* Subheadline */}
-                  <p className="text-xl text-white/95 leading-relaxed max-w-2xl">
+                  <p className="text-base sm:text-lg md:text-xl text-white/95 leading-relaxed max-w-2xl">
                     Stop wrestling with keyword research and content calendars.
                     Let Donkey SEO handle it all while you focus on building
                     your product.
                   </p>
 
-                  {/* CTA Buttons */}
-                  <div className="flex justify-between px-4">
-                    <div className="flex flex-col gap-4">
+                  {/* Social Proof */}
+                  <p className="text-sm text-white/90">
+                    Join 500+ indie founders shipping SEO content on autopilot
+                  </p>
 
+                  {/* CTA Buttons */}
+                  <div className="flex flex-col gap-4">
                       <Button
                         size="xl"
                         variant="secondary"
-                        className="bg-white hover:bg-white/90 shadow-[6px_6px_0_#1a1a1a] hover:shadow-[4px_4px_0_#1a1a1a]"
+                        className="h-14 sm:h-16 md:h-20 px-6 sm:px-8 md:px-12 text-base sm:text-lg md:text-xl lg:text-2xl bg-white hover:bg-white/90 shadow-[6px_6px_0_#1a1a1a] hover:shadow-[4px_4px_0_#1a1a1a] pulse-glow"
                         asChild
                       >
                         <a href={appUrl}>
-                          <span className="text-xl">Start free • 5 articles on us</span>
+                          <span>✨ Start free • 3 articles on us</span>
                         </a>
                     </Button>
 
 
                   {/* Trust Signals */}
-                  <div className="flex flex-wrap items-center gap-4 text-white/90 text-sm">
+                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4 text-white/90 text-xs sm:text-sm">
                     <div className="flex items-center gap-2">
                       <svg
                         className="w-5 h-5"
@@ -107,29 +111,13 @@ export function FinalCTA() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <span>5 articles lifetime free</span>
+                      <span>3 articles lifetime free</span>
                     </div>
                   </div>
                 </div>
-                <Float y={20} duration={4}>
-                    <div className="relative">
-                      {/* Glow Effect */}
-                      <div className="absolute inset-0 bg-white/30 rounded-full blur-2xl scale-110" />
+              </div>
 
-                      {/* Donkey Image */}
-                      <img
-                        src="/static/donkey.png"
-                        alt="Donkey SEO Mascot"
-                        className="relative w-24 h-24 md:w-40 md:h-40 drop-shadow-2xl"
-                        width={90}
-                        height={90}
-                      />
-
-                    </div>
-                  </Float>
-                  </div>
-                  </div>              
-                  </div>
+              </div>
             </div>
           </Card>
         </FadeIn>

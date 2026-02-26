@@ -1,7 +1,7 @@
 "use client";
 
 import { FadeIn } from "~/components/motion/fade-in";
-import { StaggerContainer, StaggerItem } from "~/components/motion/stagger";
+import { StaggerItem } from "~/components/motion/stagger";
 import { Card, CardContent } from "~/components/ui/card";
 
 export function HowItWorks() {
@@ -35,37 +35,42 @@ export function HowItWorks() {
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4">
             How it works
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             From setup to published content in 4 simple steps. No writers. No
             spreadsheets. No hassle.
           </p>
         </FadeIn>
 
-        <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="flex flex-col sm:flex-row items-center gap-6">
           {steps.map((step, index) => (
-            <StaggerItem key={index}>
-              <Card className="h-full relative overflow-hidden" hover>
-                <CardContent className="p-6">
-                  {/* Step Number */}
-                  <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-yellow-500 text-foreground font-display font-bold text-sm flex items-center justify-center">
-                    {index + 1}
-                  </div>
+            <div key={index} className="flex items-center flex-1 w-full sm:w-auto">
+              <StaggerItem className="flex-1">
+                <Card className="h-full min-h-[280px] relative overflow-hidden flex flex-col" variant="shiny" hover>
+                  <CardContent className="p-8 flex-1 flex flex-col">
+                    {/* Step Number */}
+                    <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-yellow-500 text-foreground font-display font-bold text-sm flex items-center justify-center">
+                      {index + 1}
+                    </div>
 
-                  {/* Emoji */}
-                  <div className="text-5xl mb-4">{step.emoji}</div>
+                    {/* Emoji */}
+                    <div className="text-4xl sm:text-5xl mb-4 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-yellow-100 to-yellow-200 flex items-center justify-center border-2 border-outline shadow-sm">{step.emoji}</div>
 
-                  {/* Content */}
-                  <h3 className="font-display text-lg font-bold text-foreground mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {step.description}
-                  </p>
-                </CardContent>
-              </Card>
-            </StaggerItem>
+                    {/* Content */}
+                    <h3 className="font-display text-base sm:text-lg font-bold text-foreground mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {step.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
+              {index < steps.length - 1 && (
+                <div className="hidden lg:block text-4xl text-teal-400 mx-2 flex-shrink-0">→</div>
+              )}
+            </div>
           ))}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
   );
