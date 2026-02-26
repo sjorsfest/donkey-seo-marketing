@@ -431,3 +431,28 @@
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
+
+/* Shine Effect Delay Utilities - for randomizing shine timing */
+.shine-delay-1::before { animation-delay: 0s; }
+.shine-delay-1::after { animation-delay: 0s; }
+
+.shine-delay-2::before { animation-delay: 2s; }
+.shine-delay-2::after { animation-delay: 3s; }
+
+.shine-delay-3::before { animation-delay: 4s; }
+.shine-delay-3::after { animation-delay: 6s; }
+
+.shine-delay-4::before { animation-delay: 6s; }
+.shine-delay-4::after { animation-delay: 9s; }
+
+.shine-delay-5::before { animation-delay: 8s; }
+.shine-delay-5::after { animation-delay: 12s; }
+
+.shine-delay-6::before { animation-delay: 10s; }
+.shine-delay-6::after { animation-delay: 15s; }
+
+.shine-delay-7::before { animation-delay: 3s; }
+.shine-delay-7::after { animation-delay: 7s; }
+
+.shine-delay-8::before { animation-delay: 5s; }
+.shine-delay-8::after { animation-delay: 11s; }
