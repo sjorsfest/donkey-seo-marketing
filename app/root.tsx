@@ -10,6 +10,7 @@ import { SupportWidget } from "./components/supportWidget/supportWidget";
 import { AppConfigProvider } from "./context/appConfig";
 import type { Route } from "./+types/root";
 import "./app.css";
+import { Analytics } from "@vercel/analytics/react"
 
 
 export function loader() {
@@ -45,6 +46,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         {children}
         <ScrollRestoration />
+        <Analytics />
         <SupportWidget accountId="cmko8jp0i0000lo09ghgzcul5" />
         <Scripts />
       </body>
