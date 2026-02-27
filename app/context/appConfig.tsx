@@ -7,6 +7,18 @@ interface AppConfig {
 }
 
 const AppConfigContext = createContext<AppConfig | null>(null)
+const ABSOLUTE_SCHEME_PATTERN = /^[a-z][a-z\d+\-.]*:/i
+
+function normalizeAppUrl(appUrl: string): string {
+  const trimmed = appUrl.trim()
+  if (!trimmed) return trimmed
+
+  if (ABSOLUTE_SCHEME_PATTERN.test(trimmed) || trimmed.startsWith("//")) {
+    return trimmed
+  }
+
+  return `https://${trimmed.replace(/^\/+/, "")}`
+}
 
 export function AppConfigProvider({
   children,
@@ -16,7 +28,7 @@ export function AppConfigProvider({
   appUrl: string
 }) {
   return (
-    <AppConfigContext.Provider value={{ appUrl }}>
+    <AppConfigContext.Provider value={{ appUrl: normalizeAppUrl(appUrl) }}>
       {children}
     </AppConfigContext.Provider>
   )
