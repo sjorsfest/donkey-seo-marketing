@@ -10,8 +10,8 @@ import { Pricing } from "~/components/sections/pricing";
 import { FAQ } from "~/components/sections/faq";
 import { FinalCTA } from "~/components/sections/final-cta";
 
-const SITE_URL = "https://www.donkeyseo.com";
-const SOCIAL_IMAGE_URL = `${SITE_URL}/og/og-image.png?v=1`;
+const SITE_URL = "https://www.donkeyseo.io";
+const SOCIAL_IMAGE_URL = `${SITE_URL}/og/og-image.png?v=3`;
 
 export function meta({}: Route.MetaArgs) {
   return [
