@@ -11,7 +11,7 @@ import { FAQ } from "~/components/sections/faq";
 import { FinalCTA } from "~/components/sections/final-cta";
 
 const SITE_URL = "https://www.donkeyseo.io";
-const SOCIAL_IMAGE_URL = `${SITE_URL}/og/og-image.webp?v=4`;
+const SOCIAL_IMAGE_URL = `${SITE_URL}/og/og-image.png?v=5`;
 
 export function meta({}: Route.MetaArgs) {
   return [
