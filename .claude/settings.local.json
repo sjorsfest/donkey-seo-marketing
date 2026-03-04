@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npm install:*)",
-      "WebFetch(domain:www.donkeyseo.io)"
+      "WebFetch(domain:www.donkeyseo.io)",
+      "Bash(curl:*)"
     ]
   }
 }

@@ -11,7 +11,7 @@ import { FAQ } from "~/components/sections/faq";
 import { FinalCTA } from "~/components/sections/final-cta";
 
 const SITE_URL = "https://www.donkeyseo.io";
-const SOCIAL_IMAGE_URL = `${SITE_URL}/og/og-image.png?v=6`;
+const SOCIAL_IMAGE_URL = `${SITE_URL}/og/og-image.png?v=7`;
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -33,8 +33,8 @@ export function meta({}: Route.MetaArgs) {
     { property: "og:url", content: `${SITE_URL}/` },
     { property: "og:image", content: SOCIAL_IMAGE_URL },
     { property: "og:image:secure_url", content: SOCIAL_IMAGE_URL },
-    { property: "og:image:width", content: "1400" },
-    { property: "og:image:height", content: "700" },
+    { property: "og:image:width", content: "800" },
+    { property: "og:image:height", content: "418" },
     {
       property: "og:image:alt",
       content: "Donkey SEO AI-powered SEO content pipeline preview",
