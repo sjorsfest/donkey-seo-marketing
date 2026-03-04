@@ -47,10 +47,10 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/documentation"
                   className="text-muted-foreground hover:text-yellow-600 transition-colors"
                 >
-                  Integrations
+                  Documentation
                 </a>
               </li>
             </ul>
