@@ -5,4 +5,6 @@ export default [
   route("documentation", "routes/documentation.tsx"),
   route("privacy-policy", "routes/privacy-policy.tsx"),
   route("tos", "routes/tos.tsx"),
+  route("sitemap.xml", "routes/sitemap[.]xml.tsx"),
+  route("robots.txt", "routes/robots[.]txt.tsx"),
 ] satisfies RouteConfig;
