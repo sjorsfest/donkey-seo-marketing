@@ -16,6 +16,7 @@ export function getDbPool() {
   if (!pool) {
     pool = new Pool({
       connectionString: getConnectionString(),
+      ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
     })
   }
 
