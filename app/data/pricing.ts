@@ -31,7 +31,7 @@ export const pricingPlans = [
   {
     name: "Growth",
     price: { monthly: 149, yearly: 1350 },
-    description: "For small teams",
+    description: "For growing SaaS & product teams",
     features: [
       "100 articles / month",
       "3 projects (domains)",
@@ -41,7 +41,7 @@ export const pricingPlans = [
     ],
     cta: "Start growing",
     highlighted: true, // Most popular
-    badge: "Most Popular",
+    badge: "Best for SaaS",
   },
   {
     name: "Agency",

@@ -1,9 +1,9 @@
 export const features = [
   {
     icon: "🔍",
-    title: "Discovery Pipeline",
+    title: "Automated Keyword Discovery",
     description:
-      "7-step AI research engine that runs iteratively to find the best content opportunities for your domain.",
+      "7-step AI research engine finds high-opportunity keywords automatically. No spreadsheets. No manual research. Just opportunities delivered to you.",
   },
   {
     icon: "✍️",
@@ -19,9 +19,9 @@ export const features = [
   },
   {
     icon: "🔌",
-    title: "CMS Integration API",
+    title: "Developer-Friendly API",
     description:
-      "Articles delivered to your CMS automatically. WordPress, Webflow, Next.js, or custom stack.",
+      "RESTful API delivers articles to your CMS automatically. WordPress, Webflow, Next.js, or custom stack. Simple webhook integration.",
   },
   {
     icon: "🔗",

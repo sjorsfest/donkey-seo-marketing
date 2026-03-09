@@ -12,11 +12,11 @@ export function Features() {
       <div className="section-container">
         <FadeIn className="text-center mb-16">
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            Everything you need to ship SEO content
+            Scale your SEO without scaling your team
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            From keyword research to CMS delivery. Built for solo founders,
-            indie builders, and small teams.
+            Built for solo founders, indie builders, and small SaaS teams who need
+            traffic and leads — not another manual process.
           </p>
         </FadeIn>
 

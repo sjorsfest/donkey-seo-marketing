@@ -45,14 +45,13 @@ export function FinalCTA() {
 
                   {/* Subheadline */}
                   <p className="text-base sm:text-lg md:text-xl text-white/95 leading-relaxed max-w-2xl">
-                    Stop wrestling with keyword research and content calendars.
-                    Let Donkey SEO handle it all while you focus on building
-                    your product.
+                    Stop wrestling with keyword research, hiring writers, and managing content calendars.
+                    Let Donkey handle the SEO grind while you build your product and grow your business.
                   </p>
 
                   {/* Social Proof */}
                   <p className="text-sm text-white/90">
-                    Join 500+ indie founders shipping SEO content on autopilot
+                    Join solo founders and indie builders who've automated their SEO pipeline
                   </p>
 
                   {/* CTA Buttons */}

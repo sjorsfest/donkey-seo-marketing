@@ -66,8 +66,8 @@ export function Hero() {
 
             <FadeIn direction="up" duration={0.6} delay={0.1}>
               <p className="text-base sm:text-lg md:text-xl text-foreground/80 leading-relaxed max-w-xl">
-                Automated keyword research, content creation, and CMS delivery.
-                From setup to published articles. Completely hands-off.
+                <strong className="text-foreground">For solo founders and indie builders.</strong> Stop doing SEO manually.
+                Automated keyword discovery → content creation → CMS delivery. Build your product while Donkey ships your content.
               </p>
             </FadeIn>
 

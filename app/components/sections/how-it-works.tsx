@@ -36,8 +36,8 @@ export function HowItWorks() {
             How it works
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            From setup to published content in 4 simple steps. No writers. No
-            spreadsheets. No hassle.
+            From setup to published content in 4 simple steps. No writers. No agencies.
+            No hours wasted on keyword research. Just results.
           </p>
         </FadeIn>
 

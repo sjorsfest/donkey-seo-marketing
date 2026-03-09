@@ -20,7 +20,7 @@ export function meta({}: Route.MetaArgs) {
     {
       name: "description",
       content:
-        "Automate your SEO content from keyword research to published articles. Donkey SEO discovers opportunities, writes in your brand voice, and delivers to your CMS — hands-off.",
+        "SEO automation for solo founders and indie builders. From keyword research to published articles in your CMS. Focus on building your product while Donkey ships your content.",
     },
     { tagName: "link", rel: "canonical", href: `${SITE_URL}/` },
     { property: "og:site_name", content: "Donkey SEO" },
@@ -28,7 +28,7 @@ export function meta({}: Route.MetaArgs) {
     {
       property: "og:description",
       content:
-        "Automate your SEO content from keyword research to published articles. Donkey SEO discovers opportunities, writes in your brand voice, and delivers to your CMS — hands-off.",
+        "SEO automation for solo founders and indie builders. From keyword research to published articles in your CMS. Focus on building your product while Donkey ships your content.",
     },
     { property: "og:type", content: "website" },
     { property: "og:url", content: `${SITE_URL}/` },
@@ -47,7 +47,7 @@ export function meta({}: Route.MetaArgs) {
     {
       name: "twitter:description",
       content:
-        "Automate your SEO content from keyword research to published articles. Donkey SEO discovers opportunities, writes in your brand voice, and delivers to your CMS — hands-off.",
+        "SEO automation for solo founders and indie builders. From keyword research to published articles in your CMS. Focus on building your product while Donkey ships your content.",
     },
     { name: "logo", content: LOGO_URL },
     { name: "twitter:image", content: SOCIAL_IMAGE_URL },

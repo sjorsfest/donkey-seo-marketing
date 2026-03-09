@@ -2,7 +2,7 @@ export const faqItems = [
   {
     question: "What do I get with the free plan?",
     answer:
-      "5 publish-ready articles. Full access to discovery, content creation, and calendar. No credit card required. Perfect for testing the quality before committing.",
+      "3 publish-ready articles (lifetime free). Full access to discovery, content creation, and calendar. No credit card required. Perfect for testing the quality before committing.",
   },
   {
     question: "How does Donkey SEO write articles?",
@@ -22,7 +22,17 @@ export const faqItems = [
   {
     question: 'What does "hands-off" really mean?',
     answer:
-      "You set up your project once: domain, strategy, authors. From there, Donkey SEO runs keyword discovery, generates articles, and delivers them to your CMS automatically. You only step in to review what you want.",
+      "You set up your project once: domain, strategy, target country. From there, Donkey SEO runs keyword discovery, generates articles, and delivers them to your CMS automatically via API. You only step in to review what you want. No ongoing management required.",
+  },
+  {
+    question: "How much time does this save me?",
+    answer:
+      "Manual SEO content takes 5-10 hours per article (research, outlining, writing, editing). Donkey automates all of it. Solo founders save 20-40 hours per week that they can spend building product, talking to customers, or growing revenue.",
+  },
+  {
+    question: "How technical is the setup?",
+    answer:
+      "Initial setup takes 5 minutes (just add your domain and pick your strategy). CMS integration is optional — if you want automated delivery, you'll need light API/webhook knowledge or a developer to connect it once. After that, it runs on autopilot.",
   },
   {
     question: "Can I target different countries?",
