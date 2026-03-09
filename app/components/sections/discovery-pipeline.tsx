@@ -1,138 +1,175 @@
 "use client";
 
 import { FadeIn } from "~/components/motion/fade-in";
-import { Card } from "~/components/ui/card";
-import { Badge } from "~/components/ui/badge";
-import { discoverySteps } from "~/data/pipeline-steps";
 
 export function DiscoveryPipeline() {
   return (
     <section className="py-20">
       <div className="section-container">
-        <FadeIn className="text-center mb-16">
-          <Badge variant="promo" size="lg" className="mb-4">
-            🔥 The automation magic
-          </Badge>
+        <FadeIn className="text-center mb-12">
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            Discovery Pipeline
+            You build. Donkey ships.
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            A 7-step, AI-driven research engine that runs iteratively to find
-            the best content opportunities for your domain.
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+            While you focus on your product, Donkey handles your entire SEO content pipeline.
           </p>
         </FadeIn>
 
-        <FadeIn direction="up" delay={0.2}>
-          <Card className="p-4 sm:p-6 md:p-8 max-w-5xl mx-auto">
-            <h3 className="font-display text-2xl font-bold text-foreground mb-8 text-center">
-              AI keyword research that actually thinks
-            </h3>
-
-            {/* Timeline */}
-            <div className="relative">
-              {/* Vertical Line - ends before the loop node with gradient */}
-              <div className="absolute left-4 sm:left-5 md:left-6 top-0 bottom-12 w-0.5 sm:w-1 bg-gradient-to-b from-yellow-400 via-teal-300 to-teal-400 rounded-full" />
-
-              {/* Steps grouped by phases */}
-              <div className="space-y-10">
-                {/* Discovery Phase */}
-                <div className="space-y-6">
-                  <div className="pl-10 sm:pl-12 md:pl-16">
-                    <Badge variant="teal" size="lg">🌱 Discovery Phase</Badge>
+        <FadeIn delay={0.2}>
+          <div className="max-w-6xl mx-auto">
+            {/* Split Screen Comparison */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Left Side - YOU */}
+              <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-3xl p-8 border-3 border-outline shadow-[6px_6px_0_#1a1a1a] hover:shadow-[8px_8px_0_#1a1a1a] hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
+                <div className="text-center mb-6">
+                  <div className="inline-flex items-center gap-2 bg-yellow-400 px-6 py-3 rounded-full border-2 border-outline shadow-[3px_3px_0_#1a1a1a]">
+                    <span className="text-3xl">👨‍💻</span>
+                    <span className="font-display font-bold text-foreground text-2xl">You</span>
                   </div>
-                  {discoverySteps.slice(0, 2).map((step, index) => (
-                    <div key={index} className="relative pl-10 sm:pl-12 md:pl-16">
-                      {/* Circle Marker */}
-                      <div className="absolute left-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-500 border-2 sm:border-3 md:border-4 border-card flex items-center justify-center shadow-lg">
-                        <span className="font-display font-bold text-foreground text-sm sm:text-base md:text-lg">
-                          {index + 1}
-                        </span>
-                      </div>
-
-                      {/* Content */}
-                      <div className="bg-gradient-to-br from-yellow-50 to-white rounded-xl p-5 border-2 border-border hover:border-yellow-300 transition-colors">
-                        <div className="flex items-center gap-2 mb-2">
-                          <Badge variant="secondary" size="sm">
-                            {step.step}
-                          </Badge>
-                          <h4 className="font-display font-bold text-foreground text-lg">
-                            {step.title}
-                          </h4>
-                        </div>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {step.description}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
                 </div>
 
-                {/* Analysis Phase */}
-                <div className="space-y-6">
-                  <div className="pl-10 sm:pl-12 md:pl-16">
-                    <Badge variant="teal" size="lg">📊 Analysis Phase</Badge>
-                  </div>
-                  {discoverySteps.slice(2, 4).map((step, index) => (
-                    <div key={index + 2} className="relative pl-10 sm:pl-12 md:pl-16">
-                      {/* Circle Marker */}
-                      <div className="absolute left-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-teal-300 to-teal-400 border-2 sm:border-3 md:border-4 border-card flex items-center justify-center shadow-lg">
-                        <span className="font-display font-bold text-foreground text-sm sm:text-base md:text-lg">
-                          {index + 3}
-                        </span>
-                      </div>
-
-                      {/* Content */}
-                      <div className="bg-gradient-to-br from-teal-50 to-white rounded-xl p-5 border-2 border-border hover:border-teal-300 transition-colors">
-                        <div className="flex items-center gap-2 mb-2">
-                          <Badge variant="secondary" size="sm">
-                            {step.step}
-                          </Badge>
-                          <h4 className="font-display font-bold text-foreground text-lg">
-                            {step.title}
-                          </h4>
+                <div className="space-y-4">
+                  <div className="bg-white rounded-xl p-5 border-2 border-outline">
+                    <div className="flex items-start gap-3">
+                      <div className="text-3xl flex-shrink-0">🚀</div>
+                      <div>
+                        <div className="font-display font-bold text-foreground text-lg mb-1">
+                          Build your product
                         </div>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {step.description}
-                        </p>
+                        <div className="text-sm text-muted-foreground">
+                          Ship features customers love
+                        </div>
                       </div>
                     </div>
-                  ))}
+                  </div>
+
+                  <div className="bg-white rounded-xl p-5 border-2 border-outline">
+                    <div className="flex items-start gap-3">
+                      <div className="text-3xl flex-shrink-0">💬</div>
+                      <div>
+                        <div className="font-display font-bold text-foreground text-lg mb-1">
+                          Talk to customers
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          Understand what they need
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white rounded-xl p-5 border-2 border-outline">
+                    <div className="flex items-start gap-3">
+                      <div className="text-3xl flex-shrink-0">📈</div>
+                      <div>
+                        <div className="font-display font-bold text-foreground text-lg mb-1">
+                          Grow your business
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          Focus on revenue and growth
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Optimization Phase */}
-                <div className="space-y-6">
-                  <div className="pl-10 sm:pl-12 md:pl-16">
-                    <Badge variant="teal" size="lg">🎯 Optimization Phase</Badge>
+                <div className="mt-6 text-center">
+                  <div className="inline-flex items-center gap-2 text-yellow-600 font-display font-bold text-lg">
+                    <span>⏱️</span>
+                    <span>40+ hrs/week saved</span>
                   </div>
-                  {discoverySteps.slice(4, 7).map((step, index) => (
-                    <div key={index + 4} className="relative pl-10 sm:pl-12 md:pl-16">
-                      {/* Circle Marker */}
-                      <div className="absolute left-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-yellow-300 to-yellow-400 border-2 sm:border-3 md:border-4 border-card flex items-center justify-center shadow-lg">
-                        <span className="font-display font-bold text-foreground text-sm sm:text-base md:text-lg">
-                          {index + 5}
-                        </span>
-                      </div>
+                </div>
+              </div>
 
-                      {/* Content */}
-                      <div className="bg-gradient-to-br from-yellow-50 to-white rounded-xl p-5 border-2 border-border hover:border-yellow-300 transition-colors">
-                        <div className="flex items-center gap-2 mb-2">
-                          <Badge variant="secondary" size="sm">
-                            {step.step}
-                          </Badge>
-                          <h4 className="font-display font-bold text-foreground text-lg">
-                            {step.title}
-                          </h4>
+              {/* Right Side - DONKEY */}
+              <div className="bg-gradient-to-br from-teal-50 to-teal-100 rounded-3xl p-8 border-3 border-outline shadow-[6px_6px_0_#1a1a1a] hover:shadow-[8px_8px_0_#1a1a1a] hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all relative overflow-hidden">
+                {/* Sparkles */}
+                <div className="absolute top-4 right-4 text-2xl animate-pulse">✨</div>
+                <div className="absolute bottom-4 left-4 text-2xl animate-pulse delay-100">⚡</div>
+
+                <div className="text-center mb-6 relative z-10">
+                  <div className="inline-flex items-center gap-2 bg-teal-400 px-6 py-3 rounded-full border-2 border-outline shadow-[3px_3px_0_#1a1a1a]">
+                    <span className="text-3xl">🫏</span>
+                    <span className="font-display font-bold text-foreground text-2xl">Donkey</span>
+                  </div>
+                </div>
+
+                <div className="space-y-4 relative z-10">
+                  <div className="bg-white rounded-xl p-5 border-2 border-outline">
+                    <div className="flex items-start gap-3">
+                      <div className="text-3xl flex-shrink-0">🔍</div>
+                      <div>
+                        <div className="font-display font-bold text-foreground text-lg mb-1">
+                          Find 100+ keywords
                         </div>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {step.description}
-                        </p>
+                        <div className="text-sm text-muted-foreground">
+                          AI discovers high-value opportunities
+                        </div>
                       </div>
                     </div>
-                  ))}
+                  </div>
+
+                  <div className="bg-white rounded-xl p-5 border-2 border-outline">
+                    <div className="flex items-start gap-3">
+                      <div className="text-3xl flex-shrink-0">✍️</div>
+                      <div>
+                        <div className="font-display font-bold text-foreground text-lg mb-1">
+                          Write full articles
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          In your brand voice, ready to publish
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white rounded-xl p-5 border-2 border-outline">
+                    <div className="flex items-start gap-3">
+                      <div className="text-3xl flex-shrink-0">🔗</div>
+                      <div>
+                        <div className="font-display font-bold text-foreground text-lg mb-1">
+                          Add internal links
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          Connects to your existing content
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white rounded-xl p-5 border-2 border-outline">
+                    <div className="flex items-start gap-3">
+                      <div className="text-3xl flex-shrink-0">🚀</div>
+                      <div>
+                        <div className="font-display font-bold text-foreground text-lg mb-1">
+                          Deliver to your CMS
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          Via API, webhook, or dashboard
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 text-center relative z-10">
+                  <div className="inline-flex items-center gap-2 text-teal-700 font-display font-bold text-lg">
+                    <span>🤖</span>
+                    <span>100% automated</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </Card>
+
+            {/* Bottom CTA */}
+            <div className="text-center mt-12">
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-100 to-teal-100 px-8 py-4 rounded-full border-3 border-outline shadow-[4px_4px_0_#1a1a1a]">
+                <span className="text-2xl">💡</span>
+                <span className="font-display font-bold text-foreground text-xl">
+                  Zero manual research. Zero writing. Zero hassle.
+                </span>
+              </div>
+            </div>
+          </div>
         </FadeIn>
       </div>
     </section>

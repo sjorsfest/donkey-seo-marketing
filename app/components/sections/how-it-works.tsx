@@ -1,76 +1,92 @@
 "use client";
 
 import { FadeIn } from "~/components/motion/fade-in";
-import { StaggerItem } from "~/components/motion/stagger";
-import { Card, CardContent } from "~/components/ui/card";
 
 export function HowItWorks() {
-  const steps = [
-    {
-      emoji: "🫏",
-      title: "Sign up & enter your domain",
-      description: "Donkey analyzes your brand automatically",
-    },
-    {
-      emoji: "🎯",
-      title: "Pick your strategy",
-      description: "Traffic Growth / Lead Gen / Revenue + target country",
-    },
-    {
-      emoji: "🚀",
-      title: "Launch Discovery",
-      description: "7-step AI engine finds your best keyword opportunities",
-    },
-    {
-      emoji: "✍️",
-      title: "Content arrives ready to publish",
-      description: "Articles flow to your CMS via API. Review what you want. Publish.",
-    },
-  ];
-
   return (
     <section id="how-it-works" className="py-20 bg-white/50">
       <div className="section-container">
         <FadeIn className="text-center mb-16">
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            How it works
+            Setup once. Sit back. Watch content ship.
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            From setup to published content in 4 simple steps. No writers. No agencies.
-            No hours wasted on keyword research. Just results.
+            No writers. No agencies. No hours wasted on keyword research. Just results.
           </p>
         </FadeIn>
 
-        <div className="flex flex-col sm:flex-row items-center gap-6">
-          {steps.map((step, index) => (
-            <div key={index} className="flex items-center flex-1 w-full sm:w-auto">
-              <StaggerItem className="flex-1">
-                <Card className="h-full min-h-[280px] relative overflow-hidden flex flex-col" variant="shiny" hover>
-                  <CardContent className="p-8 flex-1 flex flex-col">
-                    {/* Step Number */}
-                    <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-yellow-500 text-foreground font-display font-bold text-sm flex items-center justify-center">
-                      {index + 1}
+        <FadeIn delay={0.2}>
+          <div className="max-w-5xl mx-auto">
+            {/* Visual Flow */}
+            <div className="relative bg-gradient-to-br from-teal-50 via-white to-yellow-50 rounded-3xl p-8 md:p-12 border-2 border-outline shadow-[8px_8px_0_#1a1a1a]">
+              {/* Step 1 - Enter Domain */}
+              <div className="text-center">
+                <div className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-400 to-yellow-500 px-8 py-4 rounded-2xl border-3 border-outline shadow-[6px_6px_0_#1a1a1a] hover:shadow-[4px_4px_0_#1a1a1a] hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+                  <span className="text-4xl">🫏</span>
+                  <div>
+                    <div className="font-display font-bold text-foreground text-2xl">
+                      Enter domain
                     </div>
+                    <div className="text-foreground/80 text-sm">
+                      AI analyzes your brand
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-                    {/* Emoji */}
-                    <div className="text-4xl sm:text-5xl mb-4 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-yellow-100 to-yellow-200 flex items-center justify-center border-2 border-outline shadow-sm">{step.emoji}</div>
+              {/* Arrow Down */}
+              <div className="flex justify-center my-8">
+                <div className="text-6xl text-yellow-500 opacity-60">↓</div>
+              </div>
 
-                    {/* Content */}
-                    <h3 className="font-display text-base sm:text-lg font-bold text-foreground mb-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {step.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </StaggerItem>
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block text-4xl text-teal-400 mx-2 flex-shrink-0">→</div>
-              )}
+              {/* Automation Box */}
+              <div className="bg-gradient-to-br from-yellow-100 to-teal-100 rounded-2xl p-8 border-3 border-outline shadow-[6px_6px_0_#1a1a1a] relative overflow-hidden">
+                <div className="text-center relative z-10">
+                  <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full border-2 border-outline shadow-[3px_3px_0_#1a1a1a] mb-4">
+                    <span className="text-3xl">🤖</span>
+                    <span className="font-display font-bold text-foreground text-xl">
+                      Donkey works on autopilot
+                    </span>
+                  </div>
+                  <div className="grid sm:grid-cols-3 gap-4 mt-6">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border-2 border-outline">
+                      <div className="text-2xl mb-2">🔍</div>
+                      <div className="font-display font-bold text-sm text-foreground">Finds keywords</div>
+                    </div>
+                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border-2 border-outline">
+                      <div className="text-2xl mb-2">✍️</div>
+                      <div className="font-display font-bold text-sm text-foreground">Writes articles</div>
+                    </div>
+                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border-2 border-outline">
+                      <div className="text-2xl mb-2">🚀</div>
+                      <div className="font-display font-bold text-sm text-foreground">Ships to CMS</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Arrow Down */}
+              <div className="flex justify-center my-8">
+                <div className="text-6xl text-teal-500 opacity-60">↓</div>
+              </div>
+
+              {/* Result */}
+              <div className="text-center">
+                <div className="inline-flex items-center gap-3 bg-gradient-to-r from-teal-400 to-teal-500 px-8 py-4 rounded-2xl border-3 border-outline shadow-[6px_6px_0_#1a1a1a] hover:shadow-[4px_4px_0_#1a1a1a] hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+                  <span className="text-4xl">🎉</span>
+                  <div>
+                    <div className="font-display font-bold text-white text-2xl">
+                      Content ready to publish
+                    </div>
+                    <div className="text-white/90 text-sm">
+                      Review what you want. One-click publish.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );
