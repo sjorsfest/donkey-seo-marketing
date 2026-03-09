@@ -99,7 +99,7 @@ export function DiscoveryPipeline() {
                       <div className="text-3xl flex-shrink-0">🔍</div>
                       <div>
                         <div className="font-display font-bold text-foreground text-lg mb-1">
-                          Find 100+ keywords
+                          Find 10.000+ keywords
                         </div>
                         <div className="text-sm text-muted-foreground">
                           AI discovers high-value opportunities
