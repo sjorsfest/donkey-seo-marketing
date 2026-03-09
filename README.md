@@ -85,3 +85,21 @@ This template comes with [Tailwind CSS](https://tailwindcss.com/) already config
 ---
 
 Built with ❤️ using React Router.
+
+## Donkey SEO Backend Integration
+
+This repo now includes a full webhook-first Donkey SEO publishing flow:
+
+- `POST /api/webhooks/donkey-seo`: verifies HMAC signature, stores idempotent webhook events, and runs article publication.
+- `GET /blog`: lists published articles from local Postgres.
+- `GET /blog/:slug`: renders published article content from local Postgres.
+- `GET /sitemap.xml`: includes dynamic blog URLs from local Postgres.
+
+Required env vars are documented in `.env.example`.
+
+Required database tables:
+
+- `donkey_webhook_events`
+- `donkey_articles`
+
+The blog is rendered from your local `donkey_articles` table, not by reading live content from Donkey SEO.

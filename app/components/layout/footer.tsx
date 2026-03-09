@@ -53,6 +53,14 @@ export function Footer() {
                   Documentation
                 </a>
               </li>
+              <li>
+                <a
+                  href="/blog"
+                  className="text-muted-foreground hover:text-yellow-600 transition-colors"
+                >
+                  Blog
+                </a>
+              </li>
             </ul>
           </div>
 

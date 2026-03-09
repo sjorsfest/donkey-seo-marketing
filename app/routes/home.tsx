@@ -12,6 +12,7 @@ import { FinalCTA } from "~/components/sections/final-cta";
 
 const SITE_URL = "https://www.donkeyseo.io";
 const SOCIAL_IMAGE_URL = `${SITE_URL}/og/og-image.png?v=7`;
+const LOGO_URL = `${SITE_URL}/static/donkey.png`;
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -35,6 +36,7 @@ export function meta({}: Route.MetaArgs) {
     { property: "og:image:secure_url", content: SOCIAL_IMAGE_URL },
     { property: "og:image:width", content: "1200" },
     { property: "og:image:height", content: "630" },
+    { property: "og:logo", content: LOGO_URL },
     {
       property: "og:image:alt",
       content: "Donkey SEO AI-powered SEO content pipeline preview",
@@ -47,6 +49,7 @@ export function meta({}: Route.MetaArgs) {
       content:
         "Automate your SEO content from keyword research to published articles. Donkey SEO discovers opportunities, writes in your brand voice, and delivers to your CMS — hands-off.",
     },
+    { name: "logo", content: LOGO_URL },
     { name: "twitter:image", content: SOCIAL_IMAGE_URL },
     { name: "twitter:image:src", content: SOCIAL_IMAGE_URL },
     {

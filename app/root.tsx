@@ -11,6 +11,7 @@ import { AppConfigProvider } from "./context/appConfig";
 import type { Route } from "./+types/root";
 import "./app.css";
 import { Analytics } from "@vercel/analytics/react"
+import { BRAND_LOGO_URL, buildOrganizationJsonLd } from "./lib/seo";
 
 
 export function loader() {
@@ -31,15 +32,34 @@ export const links: Route.LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap",
   },
+  { rel: "icon", type: "image/png", href: "/static/donkey.png" },
+  { rel: "apple-touch-icon", href: "/static/donkey.png" },
   { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    ...buildOrganizationJsonLd(),
+    logo: {
+      "@type": "ImageObject",
+      url: BRAND_LOGO_URL,
+    },
+  };
+
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="logo" content={BRAND_LOGO_URL} />
+        <meta property="og:logo" content={BRAND_LOGO_URL} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <Meta />
         <Links />
       </head>

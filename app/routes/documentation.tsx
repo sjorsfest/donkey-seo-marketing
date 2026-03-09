@@ -27,6 +27,7 @@ import {
 const SITE_URL = "https://www.donkeyseo.io";
 const DOCS_URL = `${SITE_URL}/documentation`;
 const SOCIAL_IMAGE_URL = `${SITE_URL}/og/og-image.png?v=7`;
+const LOGO_URL = `${SITE_URL}/static/donkey.png`;
 
 type TabExample = RendererExample | ClientExample | CodeExample;
 
@@ -230,6 +231,7 @@ export function meta({}: Route.MetaArgs) {
     { property: "og:image:secure_url", content: SOCIAL_IMAGE_URL },
     { property: "og:image:width", content: "1200" },
     { property: "og:image:height", content: "630" },
+    { property: "og:logo", content: LOGO_URL },
     {
       property: "og:image:alt",
       content: "Donkey SEO developer documentation page preview",
@@ -242,6 +244,7 @@ export function meta({}: Route.MetaArgs) {
       content:
         "Implementation guide for Donkey SEO integration, including renderer examples, endpoint contracts, and webhook validation.",
     },
+    { name: "logo", content: LOGO_URL },
     { name: "twitter:image", content: SOCIAL_IMAGE_URL },
     { name: "twitter:image:src", content: SOCIAL_IMAGE_URL },
     {
