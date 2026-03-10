@@ -45,7 +45,7 @@ export function Pricing() {
               }`}
             >
               Yearly
-              <span className="ml-2 text-xs bg-teal-400 text-white px-2 py-0.5 rounded-full">
+              <span className="ml-2 text-xs bg-teal-400 text-foreground px-2 py-0.5 rounded-full">
                 Save 32%
               </span>
             </button>

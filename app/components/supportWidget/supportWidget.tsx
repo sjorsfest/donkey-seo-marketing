@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const WIDGET_BASE_URL = "https://app.donkey.support";
+const WIDGET_IDLE_DELAY_MS = 8000;
 
 interface SupportWidgetProps {
   /** Your unique account ID from Donkey Support */
@@ -28,6 +29,8 @@ export function SupportWidget({
   controlledByHost,
   widgetIsOpen,
 }: SupportWidgetProps) {
+  const [shouldLoadScript, setShouldLoadScript] = useState(false);
+
   useEffect(() => {
     if (controlledByHost && (window as any).SupportWidget) {
       (window as any).SupportWidget.widgetIsOpen = widgetIsOpen;
@@ -45,6 +48,39 @@ export function SupportWidget({
       widgetIsOpen,
     };
 
+  }, [accountId, email, name, metadata, metadataToken, controlledByHost, widgetIsOpen]);
+
+  useEffect(() => {
+    if (shouldLoadScript) return;
+
+    if (controlledByHost || widgetIsOpen) {
+      setShouldLoadScript(true);
+      return;
+    }
+
+    const triggerLoad = () => {
+      setShouldLoadScript(true);
+    };
+
+    const timeoutId = window.setTimeout(triggerLoad, WIDGET_IDLE_DELAY_MS);
+
+    window.addEventListener("pointerdown", triggerLoad, { once: true, passive: true });
+    window.addEventListener("keydown", triggerLoad, { once: true });
+    window.addEventListener("scroll", triggerLoad, { once: true, passive: true });
+    window.addEventListener("touchstart", triggerLoad, { once: true, passive: true });
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      window.removeEventListener("pointerdown", triggerLoad);
+      window.removeEventListener("keydown", triggerLoad);
+      window.removeEventListener("scroll", triggerLoad);
+      window.removeEventListener("touchstart", triggerLoad);
+    };
+  }, [controlledByHost, shouldLoadScript, widgetIsOpen]);
+
+  useEffect(() => {
+    if (!shouldLoadScript) return;
+
     const scriptId = "support-widget-loader";
     if (document.getElementById(scriptId)) return;
 
@@ -53,7 +89,7 @@ export function SupportWidget({
     script.src = WIDGET_BASE_URL + "/widget/loader.js";
     script.async = true;
     document.body.appendChild(script);
-  }, [accountId, email, name, metadata, metadataToken, controlledByHost, widgetIsOpen]);
+  }, [shouldLoadScript]);
 
   return null;
 }

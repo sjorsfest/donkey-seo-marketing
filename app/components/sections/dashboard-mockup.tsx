@@ -33,9 +33,9 @@ export function DashboardMockup() {
         <div className="p-3 sm:p-4 md:p-6">
           {/* Header */}
           <div className="mb-4 sm:mb-6">
-            <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-2">
+            <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-2">
               Discovery
-            </h3>
+            </h2>
             <p className="text-xs sm:text-sm text-muted-foreground">
               Keyword discovery, topic clustering, and loop iteration management.
             </p>
@@ -64,9 +64,9 @@ export function DashboardMockup() {
           {/* Pipeline Progress */}
           <div className="bg-gradient-to-br from-teal-50 to-white rounded-lg sm:rounded-2xl border-2 border-outline p-3 sm:p-4">
             <div className="flex items-center justify-between mb-3 sm:mb-4">
-              <h4 className="font-display text-[10px] sm:text-sm font-bold text-foreground tracking-wide">
+              <h3 className="font-display text-[10px] sm:text-sm font-bold text-foreground tracking-wide">
                 DISCOVERY PROGRESS
-              </h4>
+              </h3>
               <Badge variant="success" size="sm" className="font-bold text-[10px] sm:text-xs">
                 100%
               </Badge>

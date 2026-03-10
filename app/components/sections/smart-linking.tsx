@@ -41,9 +41,9 @@ export function SmartLinking() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-display font-bold text-foreground mb-1">
+                    <h3 className="font-display font-bold text-foreground mb-1">
                       Crawls your sitemap
-                    </h4>
+                    </h3>
                     <p className="text-sm text-muted-foreground">
                       Understands your existing page structure automatically
                     </p>
@@ -67,9 +67,9 @@ export function SmartLinking() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-display font-bold text-foreground mb-1">
+                    <h3 className="font-display font-bold text-foreground mb-1">
                       Contextual internal links
-                    </h4>
+                    </h3>
                     <p className="text-sm text-muted-foreground">
                       Adds links from new articles to relevant existing pages
                     </p>
@@ -93,9 +93,9 @@ export function SmartLinking() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-display font-bold text-foreground mb-1">
+                    <h3 className="font-display font-bold text-foreground mb-1">
                       Strengthens topical authority
-                    </h4>
+                    </h3>
                     <p className="text-sm text-muted-foreground">
                       Distributes link equity across your site architecture
                     </p>

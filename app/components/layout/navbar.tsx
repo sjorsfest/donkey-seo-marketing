@@ -28,11 +28,15 @@ export function Navbar() {
           <Link to="/" className="flex items-center gap-3">
             <div className="relative group">
               <img
-                src="/static/donkey.png"
-                alt="Donkey SEO"
+                src="/static/donkey-logo-48.webp"
+                srcSet="/static/donkey-logo-48.webp 1x, /static/donkey-logo-96.webp 2x"
+                alt=""
+                aria-hidden="true"
                 width={48}
                 height={48}
                 decoding="async"
+                fetchPriority="high"
+                loading="eager"
                 className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300"
               />
             </div>

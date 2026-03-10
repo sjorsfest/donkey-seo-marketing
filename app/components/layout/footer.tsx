@@ -7,11 +7,15 @@ export function Footer() {
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <img
-                src="/static/donkey.png"
-                alt="Donkey SEO"
+                src="/static/donkey-logo-32.webp"
+                srcSet="/static/donkey-logo-32.webp 1x, /static/donkey-logo-64.webp 2x"
+                alt=""
+                aria-hidden="true"
                 className="h-8 w-8"
                 width={32}
                 height={32}
+                decoding="async"
+                loading="lazy"
               />
               <span className="font-display text-lg font-bold text-foreground">
                 Donkey SEO

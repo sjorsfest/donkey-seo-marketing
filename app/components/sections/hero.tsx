@@ -44,32 +44,28 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <div className="space-y-8 text-center lg:text-left">
-            <FadeIn direction="up" duration={0.6}>
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1]">
-                <span className="text-outline-hero">SEO content</span> that
-                <br />
-                <span className="relative inline-block min-w-[8ch]">
-                  <motion.span
-                    key={variations[activeVariation].text}
-                    initial={{ opacity: 0, y: 20, rotate: -2 }}
-                    animate={{ opacity: 1, y: 0, rotate: 0 }}
-                    exit={{ opacity: 0, y: -20, rotate: 2 }}
-                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="inline-block whitespace-nowrap text-outline"
-                    style={{ color: variations[activeVariation].color }}
-                  >
-                    {variations[activeVariation].text}
-                  </motion.span>
-                </span>
-              </h1>
-            </FadeIn>
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1]">
+              <span className="text-outline-hero">SEO content</span> that
+              <br />
+              <span className="relative inline-block min-w-[8ch]">
+                <motion.span
+                  key={variations[activeVariation].text}
+                  initial={{ opacity: 0, y: 20, rotate: -2 }}
+                  animate={{ opacity: 1, y: 0, rotate: 0 }}
+                  exit={{ opacity: 0, y: -20, rotate: 2 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="inline-block whitespace-nowrap text-outline"
+                  style={{ color: variations[activeVariation].color }}
+                >
+                  {variations[activeVariation].text}
+                </motion.span>
+              </span>
+            </h1>
 
-            <FadeIn direction="up" duration={0.6} delay={0.1}>
-              <p className="text-base sm:text-lg md:text-xl text-foreground/80 leading-relaxed max-w-xl">
-                <strong className="text-foreground">For solo founders, indie builders, and vibecoders.</strong> Stop doing SEO manually.
-                Automated keyword discovery → content creation → CMS delivery. Build your product while Donkey ships your content.
-              </p>
-            </FadeIn>
+            <p className="text-base sm:text-lg md:text-xl text-foreground/80 leading-relaxed max-w-xl">
+              <strong className="text-foreground">For solo founders, indie builders, and vibecoders.</strong> Stop doing SEO manually.
+              Automated keyword discovery → content creation → CMS delivery. Build your product while Donkey ships your content.
+            </p>
 
             <FadeIn direction="up" duration={0.6} delay={0.2}>
               <div className="flex flex-col sm:flex-row gap-4">

@@ -16,13 +16,13 @@ const badgeVariants = cva(
         outline:
           "bg-transparent text-foreground border-2 border-outline",
         success:
-          "bg-green-500 text-white border-2 border-outline shadow-[2px_2px_0_#1a1a1a]",
+          "bg-green-500 text-foreground border-2 border-outline shadow-[2px_2px_0_#1a1a1a]",
         warning:
           "bg-yellow-400 text-foreground border-2 border-outline shadow-[2px_2px_0_#1a1a1a]",
         promo:
           "bg-gradient-to-r from-yellow-500 to-yellow-400 text-foreground border-2 border-outline shadow-[2px_2px_0_#1a1a1a] animate-pulse",
         teal:
-          "bg-teal-400 text-white border-2 border-outline shadow-[2px_2px_0_#1a1a1a]",
+          "bg-teal-400 text-foreground border-2 border-outline shadow-[2px_2px_0_#1a1a1a]",
       },
       size: {
         default: "text-sm px-3 py-1",

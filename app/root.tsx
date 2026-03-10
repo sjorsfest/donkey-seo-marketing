@@ -32,8 +32,8 @@ export const links: Route.LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap",
   },
-  { rel: "icon", type: "image/png", href: "/static/donkey.png" },
-  { rel: "apple-touch-icon", href: "/static/donkey.png" },
+  { rel: "icon", type: "image/png", href: "/favicon-32x32.png" },
+  { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
   { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
 ];
 

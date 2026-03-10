@@ -40,7 +40,7 @@
 
   /* Semantic Colors */
   --color-foreground: #0f3d3e;
-  --color-muted: #5a9480;
+  --color-muted: #3b6156;
   --color-muted-bg: #f0f9f6;
   --color-card: #ffffff;
   --color-border: #e5e7eb;
@@ -91,7 +91,7 @@
   --secondary: #86c4ad;
   --secondary-foreground: #0f3d3e;
   --muted: #f3f4f6;
-  --muted-foreground: #5a9480;
+  --muted-foreground: #3b6156;
   --accent: #86c4ad;
   --accent-foreground: #0f3d3e;
   --destructive: #ef4444;
