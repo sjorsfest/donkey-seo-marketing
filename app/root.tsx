@@ -13,7 +13,6 @@ import "./app.css";
 import { Analytics } from "@vercel/analytics/react"
 import { BRAND_LOGO_URL, buildOrganizationJsonLd } from "./lib/seo";
 
-
 export function loader() {
   return {
     appUrl: process.env.APP_URL ?? "",

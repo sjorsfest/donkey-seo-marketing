@@ -1,6 +1,6 @@
 const CANONICAL_ORIGIN = "https://www.donkeyseo.io";
 const DEFAULT_SITE_NAME = "Donkey SEO";
-const DEFAULT_SOCIAL_IMAGE = "/og/og-image.png?v=7";
+const DEFAULT_SOCIAL_IMAGE = "/og/og-image.png?v=8";
 const DEFAULT_SOCIAL_IMAGE_ALT = "Donkey SEO AI-powered SEO content pipeline preview";
 const BRAND_LOGO_PATH = "/static/donkey.png";
 const BRAND_LOGO_URL = `${CANONICAL_ORIGIN}${BRAND_LOGO_PATH}`;

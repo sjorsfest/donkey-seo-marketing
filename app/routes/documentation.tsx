@@ -26,7 +26,7 @@ import {
 
 const SITE_URL = "https://www.donkeyseo.io";
 const DOCS_URL = `${SITE_URL}/documentation`;
-const SOCIAL_IMAGE_URL = `${SITE_URL}/og/og-image.png?v=7`;
+const SOCIAL_IMAGE_URL = `${SITE_URL}/og/og-image.png?v=8`;
 const LOGO_URL = `${SITE_URL}/static/donkey.png`;
 
 type TabExample = RendererExample | ClientExample | CodeExample;

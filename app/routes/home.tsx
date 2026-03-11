@@ -10,7 +10,7 @@ import { FAQ } from "~/components/sections/faq";
 import { FinalCTA } from "~/components/sections/final-cta";
 
 const SITE_URL = "https://www.donkeyseo.io";
-const SOCIAL_IMAGE_URL = `${SITE_URL}/og/og-image.png?v=7`;
+const SOCIAL_IMAGE_URL = `${SITE_URL}/og/og-image.png?v=8`;
 const LOGO_URL = `${SITE_URL}/static/donkey.png`;
 
 export function meta({}: Route.MetaArgs) {
