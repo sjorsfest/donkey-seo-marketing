@@ -69,7 +69,7 @@ export function Navbar() {
 
           {/* CTA Button */}
           <Button size="sm" asChild>
-            <a href={appUrl}>Start free • 3 articles on us</a>
+            <a href={appUrl}>Start free • 3 SEO pages on us</a>
           </Button>
         </nav>
       </div>

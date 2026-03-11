@@ -45,7 +45,7 @@ export function Hero() {
           {/* Left Column - Content */}
           <div className="space-y-8 text-center lg:text-left">
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1]">
-              <span className="text-outline-hero">SEO content</span> that
+              <span className="text-outline-hero">SEO pages</span> that
               <br />
               <span className="relative inline-block min-w-[8ch]">
                 <motion.span
@@ -63,14 +63,15 @@ export function Hero() {
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-foreground/80 leading-relaxed max-w-xl">
-              <strong className="text-foreground">For solo founders, indie builders, and vibecoders.</strong> Stop doing SEO manually.
-              Automated keyword discovery → content creation → CMS delivery. Build your product while Donkey ships your content.
+              <strong className="text-foreground">For solo founders, indie builders, and lean SaaS teams.</strong>{" "}
+              Donkey turns search opportunities into publish-ready SEO pages with keyword targeting, page structure,
+              brand-voice copy, metadata, internal links, and CMS delivery. You stay focused on product and revenue.
             </p>
 
             <FadeIn direction="up" duration={0.6} delay={0.2}>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="xl" variant="gradient" className="text-base sm:text-lg w-full sm:w-auto" asChild>
-                  <a href={appUrl}>Start free • 3 articles on us</a>
+                  <a href={appUrl}>Start free • 3 SEO pages on us</a>
                 </Button>
                 <Button
                   size="lg"
@@ -111,7 +112,7 @@ export function Hero() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>3 articles lifetime free</span>
+                  <span>3 SEO pages lifetime free</span>
                 </div>
               </div>
             </FadeIn>

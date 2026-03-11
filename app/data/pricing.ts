@@ -4,7 +4,7 @@ export const pricingPlans = [
     price: { monthly: 0, yearly: 0 },
     description: "Try Donkey SEO risk-free",
     features: [
-      "3 articles (lifetime)",
+      "3 SEO pages (lifetime)",
       "1 project (domain)",
       "Full access to discovery",
       "Publishing calendar",
@@ -18,7 +18,7 @@ export const pricingPlans = [
     price: { monthly: 49, yearly: 450 },
     description: "For solo founders & indie builders",
     features: [
-      "30 articles / month",
+      "30 SEO pages / month",
       "1 project (domain)",
       "Automated keyword research",
       "Brand voice matching",
@@ -33,7 +33,7 @@ export const pricingPlans = [
     price: { monthly: 149, yearly: 1350 },
     description: "For growing SaaS & product teams",
     features: [
-      "100 articles / month",
+      "100 SEO pages / month",
       "3 projects (domains)",
       "Everything in Starter",
       "Multi-project switching",
@@ -48,7 +48,7 @@ export const pricingPlans = [
     price: { monthly: 399, yearly: 3700 },
     description: "For agencies",
     features: [
-      "350 articles / month",
+      "350 SEO pages / month",
       "10 projects (domains)",
       "Everything in Growth",
       "White-label options (coming soon)",

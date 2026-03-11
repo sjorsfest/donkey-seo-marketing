@@ -15,11 +15,11 @@ export function SmartLinking() {
                 <span className="text-6xl">🔗</span>
               </div>
               <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground">
-                Every article plugs into your site like it was always there
+                Every SEO page plugs into your site like it was always there
               </h2>
               <p className="text-lg text-muted-foreground">
-                Donkey SEO doesn't just write isolated articles: it reads your
-                existing sitemap and automatically interlinks new content with
+                Donkey SEO doesn't just generate isolated pages: it reads your
+                existing sitemap and automatically interlinks new SEO pages with
                 the pages you already have.
               </p>
 
@@ -71,7 +71,7 @@ export function SmartLinking() {
                       Contextual internal links
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      Adds links from new articles to relevant existing pages
+                      Adds links from new SEO pages to relevant existing pages
                     </p>
                   </div>
                 </div>
@@ -198,7 +198,7 @@ export function SmartLinking() {
                     ))}
                   </svg>
 
-                  {/* Center Node - New Article */}
+                  {/* Center Node - New SEO Page */}
                   <div
                     className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
                     style={{ zIndex: 5 }}
@@ -206,7 +206,7 @@ export function SmartLinking() {
                     <div className="text-center p-3 bg-yellow-100 rounded-lg border-2 border-yellow-500 shadow-lg">
                       <div className="text-2xl mb-1">✍️</div>
                       <span className="text-xs font-bold text-foreground whitespace-nowrap">
-                        New Article
+                        New SEO Page
                       </span>
                     </div>
                   </div>
@@ -266,7 +266,7 @@ export function SmartLinking() {
                 `}} />
 
                 <p className="text-center text-sm text-muted-foreground italic">
-                  Zero manual work. Every article connects automatically.
+                  Zero manual work. Every SEO page connects automatically.
                 </p>
               </div>
             </Card>

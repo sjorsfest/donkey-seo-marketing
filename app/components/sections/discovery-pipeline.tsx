@@ -11,7 +11,7 @@ export function DiscoveryPipeline() {
             You build. Donkey ships.
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            While you focus on your product, Donkey handles your entire SEO content pipeline.
+            While you focus on your product, Donkey handles your entire SEO page pipeline.
           </p>
         </FadeIn>
 
@@ -113,7 +113,7 @@ export function DiscoveryPipeline() {
                       <div className="text-3xl flex-shrink-0">✍️</div>
                       <div>
                         <div className="font-display font-bold text-foreground text-lg mb-1">
-                          Write full articles
+                          Build full SEO pages
                         </div>
                         <div className="text-sm text-muted-foreground">
                           In your brand voice, ready to publish
@@ -165,7 +165,7 @@ export function DiscoveryPipeline() {
               <div className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-100 to-teal-100 px-8 py-4 rounded-full border-3 border-outline shadow-[4px_4px_0_#1a1a1a]">
                 <span className="text-2xl">💡</span>
                 <span className="font-display font-bold text-foreground text-xl">
-                  Zero manual research. Zero writing. Zero hassle.
+                  Zero manual research. Zero page production busywork. Zero hassle.
                 </span>
               </div>
             </div>

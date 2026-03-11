@@ -141,7 +141,7 @@ export function Pricing() {
         {/* Add-on Note */}
         <FadeIn delay={0.4} className="text-center mt-8">
           <p className="text-sm text-muted-foreground">
-            Need more articles? Add-on available at €2 per article on any paid
+            Need more SEO pages? Add-on available at €2 per page on any paid
             plan.
           </p>
         </FadeIn>

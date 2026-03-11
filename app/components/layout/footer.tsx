@@ -22,8 +22,8 @@ export function Footer() {
               </span>
             </div>
             <p className="text-muted-foreground text-sm">
-              SEO content on autopilot. From keyword research to published
-              articles.
+              SEO pages on autopilot. From keyword research to published,
+              acquisition-focused pages.
             </p>
           </div>
 

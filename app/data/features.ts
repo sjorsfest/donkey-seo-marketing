@@ -7,9 +7,9 @@ export const features = [
   },
   {
     icon: "✍️",
-    title: "Content Creation",
+    title: "SEO Page Creation",
     description:
-      "Briefs and full publish-ready articles generated automatically in your brand voice.",
+      "Briefs and full publish-ready SEO pages generated automatically in your brand voice.",
   },
   {
     icon: "📅",
@@ -21,7 +21,7 @@ export const features = [
     icon: "🔌",
     title: "Developer-Friendly API",
     description:
-      "RESTful API delivers articles to your CMS automatically. WordPress, Webflow, Next.js, or custom stack. Simple webhook integration.",
+      "RESTful API delivers SEO pages to your CMS automatically. WordPress, Webflow, Next.js, or custom stack. Simple webhook integration.",
   },
   {
     icon: "🔗",

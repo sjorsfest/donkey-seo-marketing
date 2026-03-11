@@ -38,15 +38,15 @@ export function FinalCTA() {
                   <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
                     Ready to ship{" "}
                     <span className="text-outline-lg text-foreground text-primary">
-                      SEO content
+                      SEO pages
                     </span>{" "}
                     on autopilot?
                   </h2>
 
                   {/* Subheadline */}
                   <p className="text-base sm:text-lg md:text-xl text-white/95 leading-relaxed max-w-2xl">
-                    Stop wrestling with keyword research, hiring writers, and managing content calendars.
-                    Let Donkey handle the SEO grind while you build your product and grow your business.
+                    Stop wrestling with keyword research, briefs, writers, and publishing workflows. Let Donkey produce
+                    targeted SEO pages for your product, comparisons, use cases, and blog strategy while you build and sell.
                   </p>
 
                   {/* Social Proof */}
@@ -63,7 +63,7 @@ export function FinalCTA() {
                         asChild
                       >
                         <a href={appUrl}>
-                          <span>✨ Start free • 3 articles on us</span>
+                          <span>✨ Start free • 3 SEO pages on us</span>
                         </a>
                     </Button>
 
@@ -110,7 +110,7 @@ export function FinalCTA() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <span>3 articles lifetime free</span>
+                      <span>3 SEO pages lifetime free</span>
                     </div>
                   </div>
                 </div>
