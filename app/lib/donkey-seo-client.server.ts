@@ -24,9 +24,9 @@ export interface ModularBlock {
   items: unknown[]
   ordered?: boolean
   links?: Array<{
-    anchor: string
-    href: string
-    target_brief_id?: string
+    anchor?: string | null
+    href?: string | null
+    target_brief_id?: string | null
   }>
   faq_items?: Array<{
     question: string

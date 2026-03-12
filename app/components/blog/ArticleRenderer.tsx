@@ -385,33 +385,48 @@ const headingStyles: Record<string, string> = {
 // Link List Component
 // ============================================================================
 
-type LinkObject = { href?: string; anchor?: string }
+type LinkObject = { href?: string; anchor?: string; target_brief_id?: string }
 
 function BlockLinks({ links }: { links?: ModularBlock["links"] }) {
   const safeLinks = safeArray(links).filter(
-    (l): l is LinkObject => typeof l === "object" && l !== null && !!safeString((l as LinkObject).href),
+    (l): l is LinkObject =>
+      typeof l === "object" &&
+      l !== null &&
+      (!!safeString((l as LinkObject).href).trim() || !!safeString((l as LinkObject).anchor).trim()),
   )
   if (safeLinks.length === 0) return null
 
   return (
     <ul className="mt-3 sm:mt-4 md:mt-5 flex flex-wrap gap-2 sm:gap-3">
       {safeLinks.map((link, i) => {
-        const href = safeString(link.href)
-        const text = safeString(link.anchor) || href
+        const href = safeString(link.href).trim()
+        const text = safeString(link.anchor).trim() || href
         const linkAttrs = getLinkAttrs(href)
         return (
           <li key={i}>
-            <a
-              href={href}
-              target={linkAttrs.target}
-              rel={linkAttrs.rel}
-              className="inline-flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-pink-500 hover:text-pink-600 font-medium transition-colors underline underline-offset-2"
-            >
-              <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-              {text}
-            </a>
+            {href ? (
+              <a
+                href={href}
+                target={linkAttrs.target}
+                rel={linkAttrs.rel}
+                className="inline-flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-pink-500 hover:text-pink-600 font-medium transition-colors underline underline-offset-2"
+              >
+                <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+                {text}
+              </a>
+            ) : (
+              <span
+                className="inline-flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-gray-500"
+                title={safeString(link.target_brief_id) || undefined}
+              >
+                <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+                {text}
+              </span>
+            )}
           </li>
         )
       })}
@@ -426,7 +441,13 @@ function BlockLinks({ links }: { links?: ModularBlock["links"] }) {
 function HeroBlock({ block, skipHeading }: { block: ModularBlock; skipHeading: boolean }) {
   const heading = safeString(block.heading)
   const body = safeString(block.body)
-  if (!heading && !body) return null
+  const hasVisibleHeading = !!(heading && !skipHeading)
+  const hasLinks = safeArray(block.links).some((link) => {
+    if (typeof link !== "object" || link === null) return false
+    const linkObject = link as LinkObject
+    return !!safeString(linkObject.href).trim() || !!safeString(linkObject.anchor).trim()
+  })
+  if (!hasVisibleHeading && !body && !hasLinks) return null
 
   return (
     <header className="rounded-xl sm:rounded-2xl border border-yellow-200 bg-gradient-to-br from-yellow-50 to-orange-50 px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-10">
@@ -753,10 +774,16 @@ function ConclusionBlock({ block }: { block: ModularBlock }) {
 function SourcesBlock({ block }: { block: ModularBlock }) {
   const heading = safeString(block.heading) || "Sources"
   const body = safeString(block.body)
+  const items = safeArray<string>(block.items)
+    .map((item) => safeString(item).trim())
+    .filter(Boolean)
   const links = safeArray(block.links).filter(
-    (l): l is LinkObject => typeof l === "object" && l !== null && !!safeString((l as LinkObject).href),
+    (l): l is LinkObject =>
+      typeof l === "object" &&
+      l !== null &&
+      (!!safeString((l as LinkObject).href).trim() || !!safeString((l as LinkObject).anchor).trim()),
   )
-  if (links.length === 0) return null
+  if (links.length === 0 && items.length === 0 && !body) return null
 
   return (
     <section className="rounded-lg sm:rounded-xl border border-gray-200 bg-gray-50 px-4 sm:px-5 md:px-6 py-4 sm:py-5">
@@ -771,24 +798,42 @@ function SourcesBlock({ block }: { block: ModularBlock }) {
       {links.length > 0 && (
         <ul className="mt-3 sm:mt-4 space-y-1.5 sm:space-y-2">
           {links.map((link, i) => {
-            const href = safeString(link.href)
-            const text = safeString(link.anchor) || href
+            const href = safeString(link.href).trim()
+            const text = safeString(link.anchor).trim() || href
             return (
               <li key={i}>
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-pink-500 hover:text-pink-600 transition-colors underline underline-offset-2 break-words"
-                >
-                  <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                  {text}
-                </a>
+                {href ? (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-pink-500 hover:text-pink-600 transition-colors underline underline-offset-2 break-words"
+                  >
+                    <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    {text}
+                  </a>
+                ) : (
+                  <span className="inline-flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-gray-600 break-words">
+                    <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    {text}
+                  </span>
+                )}
               </li>
             )
           })}
+        </ul>
+      )}
+      {links.length === 0 && items.length > 0 && (
+        <ul className="mt-3 sm:mt-4 space-y-1.5 sm:space-y-2">
+          {items.map((item, i) => (
+            <li key={i} className="text-xs sm:text-sm leading-relaxed text-gray-600 break-words">
+              {item}
+            </li>
+          ))}
         </ul>
       )}
     </section>
@@ -862,12 +907,16 @@ interface ArticleRendererProps {
   document: ModularDocument
   featuredImageUrl?: string | null
   featuredImageAlt?: string | null
+  publishedAt?: string | null
+  updatedAt?: string | null
 }
 
 export function ArticleRenderer({
   document,
   featuredImageUrl: externalFeaturedImageUrl,
-  featuredImageAlt: externalFeaturedImageAlt
+  featuredImageAlt: externalFeaturedImageAlt,
+  publishedAt,
+  updatedAt,
 }: ArticleRendererProps) {
   const seoMeta = document.seo_meta
   const author = document.author
@@ -884,6 +933,87 @@ export function ArticleRenderer({
   const authorTwitter = author?.social_urls?.twitter || author?.social_urls?.x
   const authorWebsite = author?.social_urls?.website
   const structuredData = safeStructuredData(document.structured_data)
+
+  const formatDate = (dateString: string | null | undefined): string => {
+    if (!dateString) return ""
+    const parsedDate = new Date(dateString)
+    if (Number.isNaN(parsedDate.getTime())) return ""
+    return parsedDate.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  }
+
+  const calculateReadingTime = (doc: ModularDocument): number => {
+    const WORDS_PER_MINUTE = 255
+    let wordCount = 0
+
+    const h1 = safeString(doc.seo_meta?.h1)
+    if (h1) {
+      wordCount += h1.split(/\s+/).filter(Boolean).length
+    }
+
+    const docBlocks = safeArray<ModularBlock>(doc.blocks)
+    docBlocks.forEach((block) => {
+      const heading = safeString(block.heading)
+      if (heading) {
+        wordCount += heading.split(/\s+/).filter(Boolean).length
+      }
+
+      const body = safeString(block.body)
+      if (body) {
+        wordCount += body.split(/\s+/).filter(Boolean).length
+      }
+
+      const items = safeArray<string>(block.items)
+      items.forEach((item) => {
+        const itemText = safeString(item)
+        if (itemText) {
+          wordCount += itemText.split(/\s+/).filter(Boolean).length
+        }
+      })
+
+      const faqItems = safeArray<{ question?: unknown; answer?: unknown }>(block.faq_items)
+      faqItems.forEach((faqItem) => {
+        const question = safeString(faqItem.question)
+        const answer = safeString(faqItem.answer)
+        if (question) wordCount += question.split(/\s+/).filter(Boolean).length
+        if (answer) wordCount += answer.split(/\s+/).filter(Boolean).length
+      })
+
+      const columns = safeArray<string>(block.table_columns)
+      columns.forEach((column) => {
+        const columnText = safeString(column)
+        if (columnText) {
+          wordCount += columnText.split(/\s+/).filter(Boolean).length
+        }
+      })
+
+      const rows = safeArray<string[]>(block.table_rows)
+      rows.forEach((row) => {
+        if (!Array.isArray(row)) return
+        row.forEach((cell) => {
+          const cellText = safeString(cell)
+          if (cellText) {
+            wordCount += cellText.split(/\s+/).filter(Boolean).length
+          }
+        })
+      })
+    })
+
+    return Math.max(1, Math.ceil(wordCount / WORDS_PER_MINUTE))
+  }
+
+  const formattedPublishedDate = formatDate(publishedAt)
+  const formattedUpdatedDate = formatDate(updatedAt)
+  const showUpdatedDate = !!(
+    formattedUpdatedDate &&
+    publishedAt &&
+    updatedAt &&
+    publishedAt !== updatedAt
+  )
+  const readingTimeMinutes = calculateReadingTime(document)
 
   return (
     <div className="mx-auto max-w-5xl">
@@ -922,60 +1052,88 @@ export function ArticleRenderer({
           </div>
         )}
 
-        {/* Author Byline */}
-        {authorName && (
-          <div className="flex items-center gap-3 sm:gap-4 md:gap-5 pb-6 sm:pb-7 md:pb-8 border-b border-gray-100">
-            {authorProfileImage ? (
-              <img
-                src={authorProfileImage}
-                alt={authorName}
-                className="h-11 w-11 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full object-cover ring-2 ring-gray-100"
-              />
-            ) : (
-              <div className="flex h-11 w-11 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-gray-50 text-gray-300">
-                <svg className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-            )}
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
-                <span className="font-semibold text-sm sm:text-base text-gray-900">{authorName}</span>
-                {(authorTwitter || authorWebsite) && (
-                  <div className="flex items-center gap-1.5 sm:gap-2">
-                    {authorTwitter && (
-                      <a
-                        href={authorTwitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-pink-500 transition-colors"
-                        aria-label="Twitter"
-                      >
-                        <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                        </svg>
-                      </a>
-                    )}
-                    {authorWebsite && (
-                      <a
-                        href={authorWebsite}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-pink-500 transition-colors"
-                        aria-label="Website"
-                      >
-                        <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                        </svg>
-                      </a>
-                    )}
+        {/* Article Metadata (Author, Dates, Reading Time) */}
+        {(authorName || formattedPublishedDate || readingTimeMinutes > 0) && (
+          <div className="pb-6 sm:pb-7 md:pb-8 border-b border-gray-100 space-y-4">
+            {authorName && (
+              <div className="flex items-center gap-3 sm:gap-4 md:gap-5">
+                {authorProfileImage ? (
+                  <img
+                    src={authorProfileImage}
+                    alt={authorName}
+                    className="h-11 w-11 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full object-cover ring-2 ring-gray-100"
+                  />
+                ) : (
+                  <div className="flex h-11 w-11 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-gray-50 text-gray-300">
+                    <svg className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
                   </div>
                 )}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+                    <span className="font-semibold text-sm sm:text-base text-gray-900">{authorName}</span>
+                    {(authorTwitter || authorWebsite) && (
+                      <div className="flex items-center gap-1.5 sm:gap-2">
+                        {authorTwitter && (
+                          <a
+                            href={authorTwitter}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-pink-500 transition-colors"
+                            aria-label="Twitter"
+                          >
+                            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                          </a>
+                        )}
+                        {authorWebsite && (
+                          <a
+                            href={authorWebsite}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-pink-500 transition-colors"
+                            aria-label="Website"
+                          >
+                            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                            </svg>
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                  {authorBio && (
+                    <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm leading-relaxed text-gray-600">{authorBio}</p>
+                  )}
+                </div>
               </div>
-              {authorBio && (
-                <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm leading-relaxed text-gray-600">{authorBio}</p>
-              )}
-            </div>
+            )}
+
+            {(formattedPublishedDate || readingTimeMinutes > 0) && (
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-sm text-gray-500">
+                {formattedPublishedDate && (
+                  <time dateTime={publishedAt || undefined}>
+                    {formattedPublishedDate}
+                  </time>
+                )}
+                {showUpdatedDate && (
+                  <>
+                    <span className="text-gray-300">•</span>
+                    <time dateTime={updatedAt || undefined} title={`Last updated: ${formattedUpdatedDate}`}>
+                      Updated {formattedUpdatedDate}
+                    </time>
+                  </>
+                )}
+                {readingTimeMinutes > 0 && (
+                  <>
+                    <span className="text-gray-300">•</span>
+                    <span>{readingTimeMinutes} min read</span>
+                  </>
+                )}
+              </div>
+            )}
           </div>
         )}
 
