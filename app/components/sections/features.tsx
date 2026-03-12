@@ -8,7 +8,7 @@ import { features } from "~/data/features";
 
 export function Features() {
   return (
-    <section id="features" className="py-20">
+    <section id="features" className="py-20 bg-white/50">
       <div className="section-container">
         <FadeIn className="text-center mb-16">
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4">
@@ -16,7 +16,7 @@ export function Features() {
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             Built for solo founders, indie builders, and small SaaS teams who need
-            traffic and leads — not another manual process.
+            traffic and leads, not another manual process.
           </p>
         </FadeIn>
 

@@ -8,6 +8,7 @@ import { Features } from "~/components/sections/features";
 import { Pricing } from "~/components/sections/pricing";
 import { FAQ } from "~/components/sections/faq";
 import { FinalCTA } from "~/components/sections/final-cta";
+import { PageTypes } from "~/components/sections/page-types";
 
 const SITE_URL = "https://www.donkeyseo.io";
 const SOCIAL_IMAGE_URL = `${SITE_URL}/og/og-image.png?v=8`;
@@ -65,6 +66,7 @@ export default function Home() {
       <main>
         <Hero />
         <DiscoveryPipeline />
+        <PageTypes />
         <SmartLinking />
         <Features />
         <Pricing />

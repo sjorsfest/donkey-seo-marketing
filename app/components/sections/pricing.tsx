@@ -14,7 +14,7 @@ export function Pricing() {
   const [isYearly, setIsYearly] = useState(false);
 
   return (
-    <section id="pricing" className="py-20 bg-white/50">
+    <section id="pricing" className="py-20">
       <div className="section-container">
         <FadeIn className="text-center mb-12">
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4">

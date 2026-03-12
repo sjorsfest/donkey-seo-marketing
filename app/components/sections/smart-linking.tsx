@@ -5,7 +5,7 @@ import { Card, CardContent } from "~/components/ui/card";
 
 export function SmartLinking() {
   return (
-    <section className="py-20 bg-white/50">
+    <section className="py-20">
       <div className="section-container">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Left Column - Content */}

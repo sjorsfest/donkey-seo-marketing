@@ -11,7 +11,7 @@ import { faqItems } from "~/data/faq";
 
 export function FAQ() {
   return (
-    <section id="faq" className="py-20">
+    <section id="faq" className="py-20 bg-white/50">
       <div className="section-container max-w-4xl">
         <FadeIn className="text-center mb-12">
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4">
@@ -28,7 +28,7 @@ export function FAQ() {
               {faqItems.map((item, index) => (
                 <div
                   key={index}
-                  className="bg-muted-bg rounded-xl p-4 border-2 border-border hover:border-teal-300 transition-colors"
+                  className="bg-secondary/30 hover:bg-secondary/50 rounded-xl p-4 border-2 border-teal-300 hover:border-teal-400 transition-colors"
                 >
                   <AccordionItem value={`item-${index}`} className="border-0">
                     <AccordionTrigger className="text-left font-display font-bold text-foreground text-lg leading-relaxed hover:no-underline">

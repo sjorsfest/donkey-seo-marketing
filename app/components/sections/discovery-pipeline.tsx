@@ -8,10 +8,10 @@ export function DiscoveryPipeline() {
       <div className="section-container">
         <FadeIn className="text-center mb-12">
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            You build. Donkey ships.
+            You build product. Donkey SEO builds traffic.
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            While you focus on your product, Donkey handles your entire SEO page pipeline.
+            Your SEO pages ship on autopilot — so you never choose between building product and growing traffic.
           </p>
         </FadeIn>
 
@@ -37,7 +37,7 @@ export function DiscoveryPipeline() {
                           Build your product
                         </div>
                         <div className="text-sm text-muted-foreground">
-                          Ship features customers love
+                          Focus on what makes you different
                         </div>
                       </div>
                     </div>
@@ -45,13 +45,13 @@ export function DiscoveryPipeline() {
 
                   <div className="bg-white rounded-xl p-5 border-2 border-outline">
                     <div className="flex items-start gap-3">
-                      <div className="text-3xl flex-shrink-0">💬</div>
+                      <div className="text-3xl flex-shrink-0">💰</div>
                       <div>
                         <div className="font-display font-bold text-foreground text-lg mb-1">
-                          Talk to customers
+                          Close deals
                         </div>
                         <div className="text-sm text-muted-foreground">
-                          Understand what they need
+                          Focus on revenue, not content
                         </div>
                       </div>
                     </div>
@@ -59,13 +59,27 @@ export function DiscoveryPipeline() {
 
                   <div className="bg-white rounded-xl p-5 border-2 border-outline">
                     <div className="flex items-start gap-3">
-                      <div className="text-3xl flex-shrink-0">📈</div>
+                      <div className="text-3xl flex-shrink-0">🛠️</div>
                       <div>
                         <div className="font-display font-bold text-foreground text-lg mb-1">
-                          Grow your business
+                          Ship new features
                         </div>
                         <div className="text-sm text-muted-foreground">
-                          Focus on revenue and growth
+                          Build what your customers need
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white rounded-xl p-5 border-2 border-outline">
+                    <div className="flex items-start gap-3">
+                      <div className="text-3xl flex-shrink-0">☕</div>
+                      <div>
+                        <div className="font-display font-bold text-foreground text-lg mb-1">
+                          Take weekends off
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          SEO runs while you recharge
                         </div>
                       </div>
                     </div>
@@ -74,22 +88,22 @@ export function DiscoveryPipeline() {
 
                 <div className="mt-6 text-center">
                   <div className="inline-flex items-center gap-2 text-yellow-600 font-display font-bold text-lg">
-                    <span>⏱️</span>
-                    <span>40+ hrs/week saved</span>
+                    <span>✌️</span>
+                    <span>Your time. Your priorities.</span>
                   </div>
                 </div>
               </div>
 
               {/* Right Side - DONKEY */}
-              <div className="bg-gradient-to-br from-teal-50 to-teal-100 rounded-3xl p-8 border-3 border-outline shadow-[6px_6px_0_#1a1a1a] hover:shadow-[8px_8px_0_#1a1a1a] hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all relative overflow-hidden">
+              <div className="bg-gradient-to-br from-teal-400 to-teal-100 rounded-3xl p-8 border-3 border-outline shadow-[6px_6px_0_#1a1a1a] hover:shadow-[8px_8px_0_#1a1a1a] hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all relative overflow-hidden">
                 {/* Sparkles */}
                 <div className="absolute top-4 right-4 text-2xl animate-pulse">✨</div>
                 <div className="absolute bottom-4 left-4 text-2xl animate-pulse delay-100">⚡</div>
 
                 <div className="text-center mb-6 relative z-10">
-                  <div className="inline-flex items-center gap-2 bg-teal-400 px-6 py-3 rounded-full border-2 border-outline shadow-[3px_3px_0_#1a1a1a]">
+                  <div className="inline-flex items-center gap-2 bg-teal-50 px-6 py-3 rounded-full border-2 border-outline shadow-[3px_3px_0_#1a1a1a]">
                     <span className="text-3xl">🫏</span>
-                    <span className="font-display font-bold text-foreground text-2xl">Donkey</span>
+                    <span className="font-display font-bold text-foreground text-2xl">Donkey SEO</span>
                   </div>
                 </div>
 
@@ -99,7 +113,7 @@ export function DiscoveryPipeline() {
                       <div className="text-3xl flex-shrink-0">🔍</div>
                       <div>
                         <div className="font-display font-bold text-foreground text-lg mb-1">
-                          Find 10.000+ keywords
+                          Find thousands of keywords
                         </div>
                         <div className="text-sm text-muted-foreground">
                           AI discovers high-value opportunities
@@ -165,7 +179,7 @@ export function DiscoveryPipeline() {
               <div className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-100 to-teal-100 px-8 py-4 rounded-full border-3 border-outline shadow-[4px_4px_0_#1a1a1a]">
                 <span className="text-2xl">💡</span>
                 <span className="font-display font-bold text-foreground text-xl">
-                  Zero manual research. Zero page production busywork. Zero hassle.
+                  Zero research. Zero writing. Zero busywork.
                 </span>
               </div>
             </div>
