@@ -1,8 +1,15 @@
+import { icpRegistry } from "~/data/icp/registry";
+
+const solutions = Object.values(icpRegistry).map((config) => ({
+  name: config.name,
+  href: `/${config.slug}`,
+}));
+
 export function Footer() {
   return (
     <footer className="border-t-2 border-outline bg-card mt-20">
       <div className="section-container py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           {/* Brand Column */}
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
@@ -57,6 +64,34 @@ export function Footer() {
                   Documentation
                 </a>
               </li>
+            </ul>
+          </div>
+
+          {/* Solutions Column */}
+          <div>
+            <h3 className="font-display font-bold text-foreground mb-4">
+              Solutions
+            </h3>
+            <ul className="space-y-2 text-sm">
+              {solutions.map((solution) => (
+                <li key={solution.href}>
+                  <a
+                    href={solution.href}
+                    className="text-muted-foreground hover:text-yellow-600 transition-colors"
+                  >
+                    {solution.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources Column */}
+          <div>
+            <h3 className="font-display font-bold text-foreground mb-4">
+              Resources
+            </h3>
+            <ul className="space-y-2 text-sm">
               <li>
                 <a
                   href="/blog"
@@ -68,10 +103,10 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Resources Column */}
+          {/* Legal Column */}
           <div>
             <h3 className="font-display font-bold text-foreground mb-4">
-              Resources
+              Legal
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
@@ -97,7 +132,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © 2024 Donkey SEO. All rights reserved.
+            © 2026 Donkey SEO. All rights reserved.
           </p>
         </div>
       </div>

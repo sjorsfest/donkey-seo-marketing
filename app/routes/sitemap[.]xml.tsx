@@ -1,5 +1,6 @@
 import type { LoaderFunctionArgs } from "react-router";
 import { getPublishedArticlesForSitemap } from "~/lib/blog-data.server";
+import { icpSlugs } from "~/data/icp/registry";
 
 type SitemapRoute = {
   path: string;
@@ -38,7 +39,13 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     console.error("[sitemap] Failed to include blog routes:", error);
   }
 
-  const routes = [...staticRoutes, ...blogIndexRoute, ...articleRoutes];
+  const icpRoutes: SitemapRoute[] = icpSlugs.map((slug) => ({
+    path: `/${slug}`,
+    changefreq: "weekly" as const,
+    priority: "0.8",
+  }));
+
+  const routes = [...staticRoutes, ...icpRoutes, ...blogIndexRoute, ...articleRoutes];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

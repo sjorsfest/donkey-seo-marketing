@@ -4,24 +4,35 @@ import { motion } from "framer-motion";
 import { FadeIn } from "~/components/motion/fade-in";
 import { StaggerContainer, StaggerItem } from "~/components/motion/stagger";
 import { Card, CardContent, CardTitle } from "~/components/ui/card";
-import { features } from "~/data/features";
+import { features as defaultFeatures, type Feature } from "~/data/features";
 
-export function Features() {
+interface FeaturesProps {
+  title?: string;
+  subtitle?: string;
+  items?: Feature[];
+}
+
+export function Features({
+  title = "Scale your SEO without scaling your team",
+  subtitle = "Built for solo founders, indie builders, and small SaaS teams who need traffic and leads, not another manual process.",
+  items,
+}: FeaturesProps = {}) {
+  const featureItems = items ?? defaultFeatures;
+
   return (
     <section id="features" className="py-20 bg-white/50">
       <div className="section-container">
         <FadeIn className="text-center mb-16">
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            Scale your SEO without scaling your team
+            {title}
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Built for solo founders, indie builders, and small SaaS teams who need
-            traffic and leads, not another manual process.
+            {subtitle}
           </p>
         </FadeIn>
 
         <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, index) => (
+          {featureItems.map((feature, index) => (
             <StaggerItem key={index}>
               <Card className="h-full" variant="shiny" hover>
                 <CardContent className="p-6">

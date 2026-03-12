@@ -39,7 +39,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative pt-44 pb-20 overflow-hidden">
+    <section className="relative pt-44 2xl:pt-64  pb-20 2xl:pb-64 overflow-hidden 2xl:scale-120">
       <div className="section-container">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
@@ -63,9 +63,9 @@ export function Hero() {
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-foreground/80 leading-relaxed max-w-xl">
-              <strong className="text-foreground">For solo founders, indie builders, and lean SaaS teams.</strong>{" "}
-              Donkey turns search opportunities into publish-ready SEO pages with keyword targeting, page structure,
-              brand-voice copy, metadata, internal links, and CMS delivery. You stay focused on product and revenue.
+              <span className="inline-block pb-4 line-break"><strong className="text-foreground">For solo founders, indie builders, and lean SaaS teams.</strong>{" "}</span>
+              <span>Donkey SEO turns search opportunities into publish-ready SEO pages with keyword targeting, page structure,
+              brand-voice copy, metadata, internal links, and CMS delivery. You stay focused on product and revenue.</span>
             </p>
 
             <FadeIn direction="up" duration={0.6} delay={0.2}>

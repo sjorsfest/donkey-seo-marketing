@@ -7,25 +7,37 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "~/components/ui/accordion";
-import { faqItems } from "~/data/faq";
+import { faqItems as defaultFaqItems, type FAQItem } from "~/data/faq";
 
-export function FAQ() {
+interface FAQProps {
+  title?: string;
+  subtitle?: string;
+  items?: FAQItem[];
+}
+
+export function FAQ({
+  title = "Frequently asked questions",
+  subtitle = "Everything you need to know about Donkey SEO",
+  items,
+}: FAQProps = {}) {
+  const faqData = items ?? defaultFaqItems;
+
   return (
     <section id="faq" className="py-20 bg-white/50">
       <div className="section-container max-w-4xl">
         <FadeIn className="text-center mb-12">
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            Frequently asked questions
+            {title}
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground">
-            Everything you need to know about Donkey SEO
+            {subtitle}
           </p>
         </FadeIn>
 
         <FadeIn delay={0.2}>
           <div className="space-y-3">
             <Accordion type="single" collapsible className="w-full space-y-3">
-              {faqItems.map((item, index) => (
+              {faqData.map((item, index) => (
                 <div
                   key={index}
                   className="bg-secondary/30 hover:bg-secondary/50 rounded-xl p-4 border-2 border-teal-300 hover:border-teal-400 transition-colors"

@@ -7,8 +7,32 @@ import { Button } from "~/components/ui/button";
 import { Card } from "~/components/ui/card";
 import { useAppConfig } from "~/context/appConfig";
 
-export function FinalCTA() {
+interface FinalCTAProps {
+  badge?: string;
+  headline?: React.ReactNode;
+  subheadline?: string;
+  ctaText?: string;
+  socialProof?: string;
+}
+
+export function FinalCTA({
+  badge = "Join the herd",
+  headline,
+  subheadline = "Stop wrestling with keyword research, briefs, writers, and publishing workflows. Let Donkey produce targeted SEO pages for your product, comparisons, use cases, and blog strategy while you build and sell.",
+  ctaText = "✨ Start free • 3 SEO pages on us",
+  socialProof = "Join solo founders and indie builders who've automated their SEO pipeline",
+}: FinalCTAProps = {}) {
   const { appUrl } = useAppConfig();
+
+  const defaultHeadline = (
+    <>
+      Ready to ship{" "}
+      <span className="text-outline-lg text-foreground text-primary">
+        SEO pages
+      </span>{" "}
+      on autopilot?
+    </>
+  );
 
   return (
     <section className="py-20 relative overflow-hidden">
@@ -30,28 +54,23 @@ export function FinalCTA() {
                   <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-outline shadow-[3px_3px_0_#1a1a1a]">
                     <span className="text-2xl">🚀</span>
                     <span className="font-display font-bold text-foreground text-sm">
-                      Join the herd
+                      {badge}
                     </span>
                   </div>
 
                   {/* Headline */}
                   <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                    Ready to ship{" "}
-                    <span className="text-outline-lg text-foreground text-primary">
-                      SEO pages
-                    </span>{" "}
-                    on autopilot?
+                    {headline ?? defaultHeadline}
                   </h2>
 
                   {/* Subheadline */}
                   <p className="text-base sm:text-lg md:text-xl text-white/95 leading-relaxed max-w-2xl">
-                    Stop wrestling with keyword research, briefs, writers, and publishing workflows. Let Donkey produce
-                    targeted SEO pages for your product, comparisons, use cases, and blog strategy while you build and sell.
+                    {subheadline}
                   </p>
 
                   {/* Social Proof */}
                   <p className="text-sm text-white/90">
-                    Join solo founders and indie builders who've automated their SEO pipeline
+                    {socialProof}
                   </p>
 
                   {/* CTA Buttons */}
@@ -63,7 +82,7 @@ export function FinalCTA() {
                         asChild
                       >
                         <a href={appUrl}>
-                          <span>✨ Start free • 3 SEO pages on us</span>
+                          <span>{ctaText}</span>
                         </a>
                     </Button>
 

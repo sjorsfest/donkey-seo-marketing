@@ -11,7 +11,7 @@ export function DiscoveryPipeline() {
             You build product. Donkey SEO builds traffic.
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Your SEO pages ship on autopilot — so you never choose between building product and growing traffic.
+            Your SEO pages ship on autopilot, so you never choose between building product and growing traffic.
           </p>
         </FadeIn>
 

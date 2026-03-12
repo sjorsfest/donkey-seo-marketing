@@ -10,4 +10,5 @@ export default [
   route("tos", "routes/tos.tsx"),
   route("sitemap.xml", "routes/sitemap[.]xml.tsx"),
   route("robots.txt", "routes/robots[.]txt.tsx"),
+  route(":slug", "routes/icp.$slug.tsx"),
 ] satisfies RouteConfig;

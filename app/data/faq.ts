@@ -32,7 +32,7 @@ export const faqItems = [
   {
     question: "How technical is the setup?",
     answer:
-      "Initial setup takes 5 minutes (just add your domain and pick your strategy). CMS integration is optional — if you want automated delivery, you'll need light API/webhook knowledge or a developer to connect it once. After that, it runs on autopilot.",
+      "Initial setup takes 5 minutes (just add your domain and pick your strategy). CMS integration is optional, if you want automated delivery, you'll need light API/webhook knowledge or a developer to connect it once. After that, it runs on autopilot.",
   },
   {
     question: "Can I target different countries?",
