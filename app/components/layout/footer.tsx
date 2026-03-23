@@ -1,4 +1,6 @@
+import { useRouteLoaderData } from "react-router";
 import { icpRegistry } from "~/data/icp/registry";
+import type { BlogArticleSummary } from "~/lib/blog-data.server";
 
 const solutions = Object.values(icpRegistry).map((config) => ({
   name: config.name,
@@ -6,10 +8,14 @@ const solutions = Object.values(icpRegistry).map((config) => ({
 }));
 
 export function Footer() {
+  const rootData = useRouteLoaderData("root") as
+    | { latestPosts?: BlogArticleSummary[] }
+    | undefined;
+  const latestPosts = rootData?.latestPosts ?? [];
   return (
     <footer className="border-t-2 border-outline bg-card mt-20">
       <div className="section-container py-12">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-8">
           {/* Brand Column */}
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
@@ -102,6 +108,27 @@ export function Footer() {
               </li>
             </ul>
           </div>
+
+          {/* Latest Blogposts Column */}
+          {latestPosts.length > 0 && (
+            <div>
+              <h3 className="font-display font-bold text-foreground mb-4">
+                Latest Blogposts
+              </h3>
+              <ul className="space-y-2 text-sm">
+                {latestPosts.map((post) => (
+                  <li key={post.slug}>
+                    <a
+                      href={`/blog/${post.slug}`}
+                      className="text-muted-foreground hover:text-yellow-600 transition-colors"
+                    >
+                      {post.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Legal Column */}
           <div>

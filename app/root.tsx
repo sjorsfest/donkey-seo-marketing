@@ -12,10 +12,13 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import { Analytics } from "@vercel/analytics/react"
 import { BRAND_LOGO_URL, buildOrganizationJsonLd } from "./lib/seo";
+import { getAllPublishedArticles } from "./lib/blog-data.server";
 
-export function loader() {
+export async function loader() {
+  const latestPosts = await getAllPublishedArticles(5);
   return {
     appUrl: process.env.APP_URL ?? "",
+    latestPosts,
   };
 }
 
