@@ -15,7 +15,7 @@ import { BRAND_LOGO_URL, buildOrganizationJsonLd } from "./lib/seo";
 import { getAllPublishedArticles } from "./lib/blog-data.server";
 
 export async function loader() {
-  const latestPosts = await getAllPublishedArticles(5);
+  const latestPosts = await getAllPublishedArticles(30);
   return {
     appUrl: process.env.APP_URL ?? "",
     latestPosts,
