@@ -3,13 +3,13 @@
 
 import { sql } from "drizzle-orm"
 import { getDb } from "~/lib/db.server"
-import { withCache } from "~/lib/cache.server"
+import { withCache, cache } from "~/lib/cache.server"
 import type { ModularDocument } from "~/lib/donkey-seo-client.server"
 
-// Cache TTLs (in seconds)
-const ARTICLE_CACHE_TTL = 3600 // 60 minutes
-const ARTICLES_LIST_CACHE_TTL = 3600 // 60 minutes
-const SITEMAP_CACHE_TTL = 3600 // 60 minutes
+// Cache TTLs (in seconds) — 24 hours, invalidated on publish
+const ARTICLE_CACHE_TTL = 86400
+const ARTICLES_LIST_CACHE_TTL = 86400
+const SITEMAP_CACHE_TTL = 86400
 
 function safeString(value: unknown): string {
   if (value === null || value === undefined) return ""
@@ -279,4 +279,20 @@ export async function getArticlesByPillar(
 
     return result.rows as unknown as BlogArticleSummary[]
   })
+}
+
+/**
+ * Invalidate all blog-related Redis caches after a publish/update.
+ * Called from the publication service so fresh data is served immediately.
+ */
+export async function invalidateBlogCaches(
+  slug: string,
+  pillarSlug: string | null
+): Promise<void> {
+  await Promise.all([
+    cache.del(`article:${slug}`),
+    cache.delByPattern("articles:all:*"),
+    cache.del("articles:sitemap"),
+    pillarSlug ? cache.del(`articles:pillar:${pillarSlug}`) : Promise.resolve(),
+  ])
 }

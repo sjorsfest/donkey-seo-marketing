@@ -6,6 +6,7 @@ import { getDb } from "~/lib/db.server"
 import { getDonkeySeoClient } from "~/lib/donkey-seo-client.server"
 import { uploadImageToR2 } from "~/lib/r2.server"
 import { CANONICAL_ORIGIN } from "~/lib/seo"
+import { invalidateBlogCaches } from "~/lib/blog-data.server"
 import type { ModularBlock, ModularDocument } from "~/lib/donkey-seo-client.server"
 
 /**
@@ -302,6 +303,9 @@ export async function processArticlePublication(
       SET processed = true, processed_at = NOW()
       WHERE event_id = ${eventId}
     `)
+
+    // 9. Invalidate Redis caches for blog data
+    await invalidateBlogCaches(metadata.slug, metadata.pillar_slug)
 
     console.log(`[Donkey SEO] Successfully published article: ${metadata.slug}`)
   } catch (error) {

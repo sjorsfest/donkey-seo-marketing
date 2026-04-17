@@ -1,110 +1,70 @@
-// Simple in-memory cache with TTL
-// Caches data to reduce database queries
+// Redis-based cache with TTL
+// All blog data is cached in Redis to avoid unnecessary database queries
 
-interface CacheEntry<T> {
-  data: T
-  expiresAt: number
-}
+import { getRedis } from "~/lib/redis.server"
 
-class MemoryCache {
-  private cache: Map<string, CacheEntry<unknown>> = new Map()
+const CACHE_PREFIX = "donkeyseo:blog:"
 
-  /**
-   * Get cached data if it exists and hasn't expired
-   */
-  get<T>(key: string): T | null {
-    const entry = this.cache.get(key) as CacheEntry<T> | undefined
-
-    if (!entry) {
-      return null
-    }
-
-    // Check if expired
-    if (Date.now() > entry.expiresAt) {
-      this.cache.delete(key)
-      return null
-    }
-
-    return entry.data
-  }
-
-  /**
-   * Set data in cache with TTL in seconds
-   */
-  set<T>(key: string, data: T, ttlSeconds: number): void {
-    const expiresAt = Date.now() + ttlSeconds * 1000
-
-    this.cache.set(key, {
-      data,
-      expiresAt,
-    })
-  }
-
-  /**
-   * Clear specific cache key
-   */
-  delete(key: string): void {
-    this.cache.delete(key)
-  }
-
-  /**
-   * Clear all cache
-   */
-  clear(): void {
-    this.cache.clear()
-  }
-
-  /**
-   * Get cache stats (useful for monitoring)
-   */
-  getStats() {
-    const now = Date.now()
-    let validEntries = 0
-    let expiredEntries = 0
-
-    this.cache.forEach((entry) => {
-      if (now > entry.expiresAt) {
-        expiredEntries++
-      } else {
-        validEntries++
-      }
-    })
-
-    return {
-      totalEntries: this.cache.size,
-      validEntries,
-      expiredEntries,
-    }
-  }
-
-  /**
-   * Clean up expired entries (can be called periodically)
-   */
-  cleanup(): void {
-    const now = Date.now()
-    const keysToDelete: string[] = []
-
-    this.cache.forEach((entry, key) => {
-      if (now > entry.expiresAt) {
-        keysToDelete.push(key)
-      }
-    })
-
-    keysToDelete.forEach((key) => this.cache.delete(key))
+/**
+ * Get cached data from Redis
+ */
+async function get<T>(key: string): Promise<T | null> {
+  try {
+    const redis = getRedis()
+    const data = await redis.get(`${CACHE_PREFIX}${key}`)
+    if (!data) return null
+    return JSON.parse(data) as T
+  } catch (error) {
+    console.error(`[Cache] Redis GET failed for key "${key}":`, error)
+    return null
   }
 }
 
-// Singleton instance
-const cache = new MemoryCache()
-
-// Cleanup expired entries every 5 minutes
-if (typeof setInterval !== "undefined") {
-  setInterval(() => {
-    cache.cleanup()
-  }, 5 * 60 * 1000)
+/**
+ * Set data in Redis with TTL in seconds
+ */
+async function set<T>(key: string, data: T, ttlSeconds: number): Promise<void> {
+  try {
+    const redis = getRedis()
+    await redis.set(
+      `${CACHE_PREFIX}${key}`,
+      JSON.stringify(data),
+      "EX",
+      ttlSeconds
+    )
+  } catch (error) {
+    console.error(`[Cache] Redis SET failed for key "${key}":`, error)
+  }
 }
 
-export { cache }
+/**
+ * Delete a specific cache key
+ */
+async function del(key: string): Promise<void> {
+  try {
+    const redis = getRedis()
+    await redis.del(`${CACHE_PREFIX}${key}`)
+  } catch (error) {
+    console.error(`[Cache] Redis DEL failed for key "${key}":`, error)
+  }
+}
+
+/**
+ * Delete all cache keys matching a pattern
+ */
+async function delByPattern(pattern: string): Promise<void> {
+  try {
+    const redis = getRedis()
+    const keys = await redis.keys(`${CACHE_PREFIX}${pattern}`)
+    if (keys.length > 0) {
+      await redis.del(...keys)
+    }
+  } catch (error) {
+    console.error(`[Cache] Redis DEL pattern failed for "${pattern}":`, error)
+  }
+}
+
+export const cache = { get, set, del, delByPattern }
 
 /**
  * Helper function to cache the result of an async function
@@ -114,17 +74,14 @@ export async function withCache<T>(
   ttlSeconds: number,
   fn: () => Promise<T>
 ): Promise<T> {
-  // Try to get from cache
-  const cached = cache.get<T>(key)
+  const cached = await cache.get<T>(key)
   if (cached !== null) {
     return cached
   }
 
-  // If not in cache, execute function
   const result = await fn()
 
-  // Store in cache
-  cache.set(key, result, ttlSeconds)
+  await cache.set(key, result, ttlSeconds)
 
   return result
 }
