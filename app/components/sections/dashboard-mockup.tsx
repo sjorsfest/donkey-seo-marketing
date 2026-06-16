@@ -2,7 +2,7 @@
 
 import { Scale, Trophy, BookOpen, Check, TrendingUp, type LucideIcon } from "lucide-react";
 
-// Illustrative product UI — shows the *outcome* (traffic up, pages live), not the machinery.
+// Illustrative product UI: shows the *outcome* (traffic up, pages live), not the machinery.
 const TRAFFIC_BARS = [26, 32, 29, 41, 48, 62, 76, 88];
 
 const PAGES: {
@@ -35,7 +35,7 @@ export function DashboardMockup() {
 
         {/* Content */}
         <div className="p-5 sm:p-6">
-          {/* Traffic — the value moment */}
+          {/* Traffic: the value moment */}
           <div className="rounded-2xl border-2 border-outline bg-teal-50 p-4 sm:p-5">
             <div className="mb-4 flex items-start justify-between">
               <div>
@@ -64,7 +64,7 @@ export function DashboardMockup() {
             </div>
           </div>
 
-          {/* Recently published — the hands-off outcome */}
+          {/* Recently published: the hands-off outcome */}
           <div className="mt-4">
             <div className="mb-2.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               Published for you this week

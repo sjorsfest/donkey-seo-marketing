@@ -20,7 +20,7 @@ export function Pricing() {
           eyebrow="Pricing"
           eyebrowIcon={<Tag />}
           title="Pricing that scales with you"
-          subtitle="Start free — no credit card required. Cancel anytime."
+          subtitle="Start free. No credit card required. Cancel anytime."
           className="mb-8"
         />
 

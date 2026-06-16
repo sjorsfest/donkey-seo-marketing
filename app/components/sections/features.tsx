@@ -14,7 +14,7 @@ interface FeaturesProps {
 
 export function Features({
   title = "Everything you need. Nothing you have to manage.",
-  subtitle = "Built for solo founders, indie builders, and small SaaS teams who need traffic and leads — not another manual process to babysit.",
+  subtitle = "Built for solo founders, indie builders, and small SaaS teams who need traffic and leads, not another manual process to babysit.",
   items,
 }: FeaturesProps = {}) {
   const featureItems = items ?? defaultFeatures;

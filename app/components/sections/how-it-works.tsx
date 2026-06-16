@@ -20,7 +20,7 @@ const STEPS = [
     Icon: Globe,
     title: "Connect your domain",
     description:
-      "Add your site and pick a target country. Donkey reads your brand, voice, and sitemap automatically — no brief, no onboarding call.",
+      "Add your site and pick a target country. Donkey reads your brand, voice, and sitemap automatically. No brief, no onboarding call.",
   },
   {
     n: "02",
@@ -28,7 +28,7 @@ const STEPS = [
     Icon: Sparkles,
     title: "AI researches & writes",
     description:
-      "The 7-step engine discovers high-intent keywords, then drafts publish-ready pages in your brand voice — structure, metadata, and internal links included.",
+      "The 7-step engine discovers high-intent keywords, then drafts publish-ready pages in your brand voice. Structure, metadata, and internal links included.",
   },
   {
     n: "03",
@@ -36,7 +36,7 @@ const STEPS = [
     Icon: Send,
     title: "Auto-publishes to your CMS",
     description:
-      "Pages ship straight to WordPress, Webflow, Next.js, or any CMS via API and webhooks. Review what you want — or let it run fully hands-off.",
+      "Pages ship straight to WordPress, Webflow, Next.js, or any CMS via API and webhooks. Review what you want, or let it run fully hands-off.",
   },
 ];
 
@@ -91,7 +91,7 @@ export function HowItWorks() {
           ))}
         </StaggerContainer>
 
-        {/* Slim impact strip — the payoff, kept calm (no separate stats section) */}
+        {/* Slim impact strip: the payoff, kept calm (no separate stats section) */}
         <FadeIn delay={0.2} className="mt-12">
           <div className="mx-auto flex max-w-3xl flex-col divide-y-2 divide-border rounded-2xl border-2 border-outline bg-white py-2 shadow-[4px_4px_0_#1a1a1a] sm:flex-row sm:divide-x-2 sm:divide-y-0">
             {IMPACT.map((stat) => (

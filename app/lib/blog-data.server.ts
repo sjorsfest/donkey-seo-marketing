@@ -6,7 +6,7 @@ import { getDb } from "~/lib/db.server"
 import { withCache, cache } from "~/lib/cache.server"
 import type { ModularDocument } from "~/lib/donkey-seo-client.server"
 
-// Cache TTLs (in seconds) — 24 hours, invalidated on publish
+// Cache TTLs (in seconds): 24 hours, invalidated on publish
 const ARTICLE_CACHE_TTL = 86400
 const ARTICLES_LIST_CACHE_TTL = 86400
 const SITEMAP_CACHE_TTL = 86400

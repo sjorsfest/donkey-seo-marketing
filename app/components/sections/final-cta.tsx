@@ -18,7 +18,7 @@ const TRUST = ["No credit card required", "Cancel anytime", "3 SEO pages free, f
 export function FinalCTA({
   badge = "Join the herd",
   headline,
-  subheadline = "Stop wrestling with keyword research, briefs, writers, and publishing workflows. Let Donkey produce targeted SEO pages — product pages, comparisons, use cases, and a full blog strategy — while you build and sell.",
+  subheadline = "Stop wrestling with keyword research, briefs, writers, and publishing workflows. Let Donkey produce targeted SEO pages (product pages, comparisons, use cases, and a full blog strategy) while you build and sell.",
   ctaText = "Start free · 3 SEO pages on us",
   socialProof = "Built for solo founders and indie builders automating their SEO pipeline.",
 }: FinalCTAProps = {}) {

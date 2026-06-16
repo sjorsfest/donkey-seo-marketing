@@ -4,11 +4,11 @@ import { Footer } from "~/components/layout/footer";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Privacy Policy — Donkey SEO" },
+    { title: "Privacy Policy | Donkey SEO" },
     {
       name: "description",
       content:
-        "Privacy Policy for Donkey SEO — Learn how we collect, use, and protect your data.",
+        "Privacy Policy for Donkey SEO. Learn how we collect, use, and protect your data.",
     },
   ];
 }

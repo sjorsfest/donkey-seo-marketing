@@ -76,11 +76,11 @@ export async function withCache<T>(
 ): Promise<T> {
   const cached = await cache.get<T>(key)
   if (cached !== null) {
-    console.log(`[Cache] HIT  "${key}" — served from Redis`)
+    console.log(`[Cache] HIT  "${key}": served from Redis`)
     return cached
   }
 
-  console.log(`[Cache] MISS "${key}" — fetching from database`)
+  console.log(`[Cache] MISS "${key}": fetching from database`)
   const result = await fn()
 
   await cache.set(key, result, ttlSeconds)

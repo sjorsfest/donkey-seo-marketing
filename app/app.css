@@ -1002,7 +1002,7 @@
 }
 
 /* ============================================
-   REMAKE 2026 — TEXTURE, RHYTHM & MOTION
+   REMAKE 2026: TEXTURE, RHYTHM & MOTION
    ============================================ */
 
 /* Reusable brutalist shadow tokens (so JSX can use shadow-brutal / shadow-brutal-lg) */
@@ -1014,7 +1014,7 @@
   --color-coral: #ff8552;
 }
 
-/* Eyebrow label — the little pill that sits above every section headline */
+/* Eyebrow label: the little pill that sits above every section headline */
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -1044,7 +1044,7 @@
   background-size: 28px 28px;
 }
 
-/* Marquee — used by the "ships to your stack" strip */
+/* Marquee: used by the "ships to your stack" strip */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -1070,7 +1070,7 @@
 }
 .animate-spin-slow { animation: spin-slow 8s linear infinite; }
 
-/* Icon chip base — branded container for lucide icons */
+/* Icon chip base: branded container for lucide icons */
 .icon-chip {
   display: inline-flex;
   align-items: center;

@@ -15,7 +15,7 @@ export function Footer() {
   const rootData = useRouteLoaderData("root") as
     | { latestPosts?: BlogArticleSummary[] }
     | undefined;
-  const latestPosts = rootData?.latestPosts ?? [];
+  const latestPosts = (rootData?.latestPosts ?? []).slice(0, 4);
   return (
     <footer className="relative mt-20 border-t-2 border-outline bg-card">
       {/* Top accent */}
@@ -24,7 +24,7 @@ export function Footer() {
         className="h-1.5 w-full bg-gradient-to-r from-yellow-400 via-teal-300 to-yellow-400"
       />
       <div className="section-container py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8">
           {/* Brand Column */}
           <div className="col-span-2 lg:col-span-2">
             <div className="mb-4 flex items-center gap-2.5">
@@ -44,7 +44,7 @@ export function Footer() {
               </span>
             </div>
             <p className="max-w-xs text-sm text-muted-foreground leading-relaxed">
-              SEO pages on autopilot — from keyword research to published,
+              SEO pages on autopilot. From keyword research to published,
               acquisition-focused pages. Built for solo founders and indie
               builders.
             </p>

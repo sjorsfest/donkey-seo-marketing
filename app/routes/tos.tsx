@@ -4,11 +4,11 @@ import { Footer } from "~/components/layout/footer";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Terms of Service — Donkey SEO" },
+    { title: "Terms of Service | Donkey SEO" },
     {
       name: "description",
       content:
-        "Terms of Service for Donkey SEO — AI-powered SEO content pipeline.",
+        "Terms of Service for Donkey SEO: AI-powered SEO content pipeline.",
     },
   ];
 }
@@ -34,7 +34,7 @@ export default function TermsOfService() {
           <h2>2. Description of Service</h2>
           <p>
             Donkey SEO provides an AI-powered SEO content pipeline that enables
-            website owners to automate their SEO strategy — from keyword research
+            website owners to automate their SEO strategy, from keyword research
             and content discovery to article generation and CMS delivery. The
             Service includes the dashboard, content pipeline, integrations, and
             related tools.

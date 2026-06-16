@@ -10,7 +10,7 @@ import { FinalCTA } from "~/components/sections/final-cta";
 import { features } from "~/data/features";
 import { faqItems } from "~/data/faq";
 
-// Curated for the home page — value-first, not exhaustive. The full sets and the
+// Curated for the home page, value-first, not exhaustive. The full sets and the
 // parked sections (integration strip, stats band, you-vs-donkey, page types,
 // smart-linking) still live in the codebase and are one import away.
 const HOME_FEATURES = features.slice(0, 6);
@@ -24,7 +24,7 @@ const LOGO_URL = `${SITE_URL}/static/donkey.png`;
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Donkey SEO — AI-Powered SEO Page Pipeline" },
+    { title: "Donkey SEO: AI-Powered SEO Page Pipeline" },
     {
       name: "description",
       content:
@@ -32,7 +32,7 @@ export function meta({}: Route.MetaArgs) {
     },
     { tagName: "link", rel: "canonical", href: `${SITE_URL}/` },
     { property: "og:site_name", content: "Donkey SEO" },
-    { property: "og:title", content: "Donkey SEO — AI-Powered SEO Page Pipeline" },
+    { property: "og:title", content: "Donkey SEO: AI-Powered SEO Page Pipeline" },
     {
       property: "og:description",
       content:
@@ -51,7 +51,7 @@ export function meta({}: Route.MetaArgs) {
     },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:url", content: `${SITE_URL}/` },
-    { name: "twitter:title", content: "Donkey SEO — AI-Powered SEO Page Pipeline" },
+    { name: "twitter:title", content: "Donkey SEO: AI-Powered SEO Page Pipeline" },
     {
       name: "twitter:description",
       content:

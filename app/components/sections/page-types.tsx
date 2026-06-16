@@ -76,7 +76,7 @@ export function PageTypes() {
           eyebrow="Beyond generic blog posts"
           eyebrowIcon={<Brain />}
           title="The right page type for every search intent"
-          subtitle="Donkey creates purpose-built SEO pages that match the intent behind each keyword — so your content mix ranks, converts, and builds authority."
+          subtitle="Donkey creates purpose-built SEO pages that match the intent behind each keyword, so your content mix ranks, converts, and builds authority."
           className="mb-10"
         />
 

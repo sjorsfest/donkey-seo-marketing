@@ -26,7 +26,7 @@ export const features: Feature[] = [
     tone: "yellow",
     title: "Automated Keyword Discovery",
     description:
-      "A 7-step AI research engine finds high-opportunity keywords automatically. No spreadsheets, no manual research — just opportunities delivered to you.",
+      "A 7-step AI research engine finds high-opportunity keywords automatically. No spreadsheets, no manual research. Just opportunities delivered to you.",
   },
   {
     icon: PenLine,

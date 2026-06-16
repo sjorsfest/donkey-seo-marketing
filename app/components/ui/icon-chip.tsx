@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "~/lib/utils";
 
 /**
- * Branded container for a lucide icon — the neo-brutalist "icon chip".
+ * Branded container for a lucide icon: the neo-brutalist "icon chip".
  * Usage: <IconChip tone="teal"><Search /></IconChip>
  */
 const iconChipVariants = cva(

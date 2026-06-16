@@ -42,7 +42,7 @@ export function Hero() {
 
             <p className="text-lg md:text-xl text-foreground/80 leading-relaxed max-w-lg mx-auto lg:mx-0">
               Donkey finds the keywords, writes publish-ready pages in your
-              voice, and ships them to your CMS — automatically.{" "}
+              voice, and ships them to your CMS, automatically.{" "}
               <span className="font-semibold text-foreground">
                 Zero research, zero writing, zero busywork.
               </span>
@@ -110,7 +110,7 @@ export function Hero() {
               </Float>
             </FadeIn>
 
-            {/* Single accent chip — the payoff moment */}
+            {/* Single accent chip: the payoff moment */}
             <Float
               y={10}
               duration={6.5}
