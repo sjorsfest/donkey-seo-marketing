@@ -1,90 +1,107 @@
 "use client";
 
+import { Fragment } from "react";
+import { ArrowRight, Globe, Sparkles, Send, Workflow } from "lucide-react";
+import { SectionHeader } from "~/components/ui/section-header";
+import { StaggerContainer, StaggerItem } from "~/components/motion/stagger";
 import { FadeIn } from "~/components/motion/fade-in";
+import { IconChip } from "~/components/ui/icon-chip";
+
+const IMPACT = [
+  { value: "5–10 hrs", label: "saved per page" },
+  { value: "7-step", label: "AI discovery engine" },
+  { value: "Set & forget", label: "ships on its own" },
+];
+
+const STEPS = [
+  {
+    n: "01",
+    tone: "yellow" as const,
+    Icon: Globe,
+    title: "Connect your domain",
+    description:
+      "Add your site and pick a target country. Donkey reads your brand, voice, and sitemap automatically — no brief, no onboarding call.",
+  },
+  {
+    n: "02",
+    tone: "teal" as const,
+    Icon: Sparkles,
+    title: "AI researches & writes",
+    description:
+      "The 7-step engine discovers high-intent keywords, then drafts publish-ready pages in your brand voice — structure, metadata, and internal links included.",
+  },
+  {
+    n: "03",
+    tone: "coral" as const,
+    Icon: Send,
+    title: "Auto-publishes to your CMS",
+    description:
+      "Pages ship straight to WordPress, Webflow, Next.js, or any CMS via API and webhooks. Review what you want — or let it run fully hands-off.",
+  },
+];
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-20 bg-white/50">
+    <section id="how-it-works" className="py-20 md:py-28 bg-white/50 bg-grid-dots">
       <div className="section-container">
-        <FadeIn className="text-center mb-16">
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            Setup once. Sit back. Watch content ship.
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            No writers. No agencies. No hours wasted on keyword research. Just results.
-          </p>
-        </FadeIn>
+        <SectionHeader
+          eyebrow="How it works"
+          eyebrowIcon={<Workflow />}
+          title="Set it up once. Watch pages ship."
+          subtitle="No writers. No agencies. No hours lost to keyword research. Three steps from domain to published."
+          className="mb-14"
+        />
 
-        <FadeIn delay={0.2}>
-          <div className="max-w-5xl mx-auto">
-            {/* Visual Flow */}
-            <div className="relative bg-gradient-to-br from-teal-50 via-white to-yellow-50 rounded-3xl p-8 md:p-12 border-2 border-outline shadow-[8px_8px_0_#1a1a1a]">
-              {/* Step 1 - Enter Domain */}
-              <div className="text-center">
-                <div className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-400 to-yellow-500 px-8 py-4 rounded-2xl border-3 border-outline shadow-[6px_6px_0_#1a1a1a] hover:shadow-[4px_4px_0_#1a1a1a] hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
-                  <span className="text-4xl">🫏</span>
-                  <div>
-                    <div className="font-display font-bold text-foreground text-2xl">
-                      Enter domain
-                    </div>
-                    <div className="text-foreground/80 text-sm">
-                      AI analyzes your brand
-                    </div>
-                  </div>
+        <StaggerContainer className="flex flex-col lg:flex-row items-stretch gap-5 lg:gap-3 max-w-6xl mx-auto">
+          {STEPS.map((step, i) => (
+            <Fragment key={step.n}>
+              <StaggerItem className="flex-1">
+                <div className="group relative h-full overflow-hidden rounded-3xl border-2 border-outline bg-white p-7 shadow-[6px_6px_0_#1a1a1a] transition-all hover:-translate-y-1 hover:shadow-[8px_8px_0_#1a1a1a] text-center lg:text-left">
+                  <span className="pointer-events-none absolute -right-1 -top-3 select-none font-display text-7xl font-bold text-teal-100">
+                    {step.n}
+                  </span>
+                  <IconChip
+                    tone={step.tone}
+                    size="lg"
+                    className="relative mx-auto lg:mx-0 mb-5"
+                  >
+                    <step.Icon strokeWidth={2.25} />
+                  </IconChip>
+                  <h3 className="relative font-display text-xl sm:text-2xl font-bold text-foreground mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="relative text-sm sm:text-base text-muted-foreground leading-relaxed">
+                    {step.description}
+                  </p>
                 </div>
-              </div>
+              </StaggerItem>
 
-              {/* Arrow Down */}
-              <div className="flex justify-center my-8">
-                <div className="text-6xl text-yellow-500 opacity-60">↓</div>
-              </div>
-
-              {/* Automation Box */}
-              <div className="bg-gradient-to-br from-yellow-100 to-teal-100 rounded-2xl p-8 border-3 border-outline shadow-[6px_6px_0_#1a1a1a] relative overflow-hidden">
-                <div className="text-center relative z-10">
-                  <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full border-2 border-outline shadow-[3px_3px_0_#1a1a1a] mb-4">
-                    <span className="text-3xl">🤖</span>
-                    <span className="font-display font-bold text-foreground text-xl">
-                      Donkey works on autopilot
-                    </span>
-                  </div>
-                  <div className="grid sm:grid-cols-3 gap-4 mt-6">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border-2 border-outline">
-                      <div className="text-2xl mb-2">🔍</div>
-                      <div className="font-display font-bold text-sm text-foreground">Finds keywords</div>
-                    </div>
-                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border-2 border-outline">
-                      <div className="text-2xl mb-2">✍️</div>
-                      <div className="font-display font-bold text-sm text-foreground">Writes articles</div>
-                    </div>
-                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border-2 border-outline">
-                      <div className="text-2xl mb-2">🚀</div>
-                      <div className="font-display font-bold text-sm text-foreground">Ships to CMS</div>
-                    </div>
-                  </div>
+              {i < STEPS.length - 1 && (
+                <div className="flex items-center justify-center">
+                  <span className="icon-chip size-10 rounded-full bg-teal-300 [&_svg]:size-5 rotate-90 lg:rotate-0">
+                    <ArrowRight
+                      className="text-teal-950"
+                      strokeWidth={2.5}
+                      aria-hidden="true"
+                    />
+                  </span>
                 </div>
-              </div>
+              )}
+            </Fragment>
+          ))}
+        </StaggerContainer>
 
-              {/* Arrow Down */}
-              <div className="flex justify-center my-8">
-                <div className="text-6xl text-teal-500 opacity-60">↓</div>
-              </div>
-
-              {/* Result */}
-              <div className="text-center">
-                <div className="inline-flex items-center gap-3 bg-gradient-to-r from-teal-400 to-teal-500 px-8 py-4 rounded-2xl border-3 border-outline shadow-[6px_6px_0_#1a1a1a] hover:shadow-[4px_4px_0_#1a1a1a] hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
-                  <span className="text-4xl">🎉</span>
-                  <div>
-                    <div className="font-display font-bold text-white text-2xl">
-                      Content ready to publish
-                    </div>
-                    <div className="text-white/90 text-sm">
-                      Review what you want. One-click publish.
-                    </div>
-                  </div>
+        {/* Slim impact strip — the payoff, kept calm (no separate stats section) */}
+        <FadeIn delay={0.2} className="mt-12">
+          <div className="mx-auto flex max-w-3xl flex-col divide-y-2 divide-border rounded-2xl border-2 border-outline bg-white py-2 shadow-[4px_4px_0_#1a1a1a] sm:flex-row sm:divide-x-2 sm:divide-y-0">
+            {IMPACT.map((stat) => (
+              <div key={stat.label} className="flex-1 px-6 py-4 text-center">
+                <div className="font-display text-2xl font-bold text-foreground">
+                  {stat.value}
                 </div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
               </div>
-            </div>
+            ))}
           </div>
         </FadeIn>
       </div>

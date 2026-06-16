@@ -17,30 +17,36 @@ export function Footer() {
     | undefined;
   const latestPosts = rootData?.latestPosts ?? [];
   return (
-    <footer className="border-t-2 border-outline bg-card mt-20">
+    <footer className="relative mt-20 border-t-2 border-outline bg-card">
+      {/* Top accent */}
+      <div
+        aria-hidden="true"
+        className="h-1.5 w-full bg-gradient-to-r from-yellow-400 via-teal-300 to-yellow-400"
+      />
       <div className="section-container py-12">
-        <div className="grid grid-cols-1 md:grid-cols-7 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8">
           {/* Brand Column */}
-          <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
+          <div className="col-span-2 lg:col-span-2">
+            <div className="mb-4 flex items-center gap-2.5">
               <img
                 src="/static/donkey-logo-32.webp"
                 srcSet="/static/donkey-logo-32.webp 1x, /static/donkey-logo-64.webp 2x"
                 alt=""
                 aria-hidden="true"
-                className="h-8 w-8"
-                width={32}
-                height={32}
+                className="h-9 w-9"
+                width={36}
+                height={36}
                 decoding="async"
                 loading="lazy"
               />
-              <span className="font-display text-lg font-bold text-foreground">
+              <span className="font-display text-xl font-bold text-yellow-500 text-outline">
                 Donkey SEO
               </span>
             </div>
-            <p className="text-muted-foreground text-sm">
-              SEO pages on autopilot. From keyword research to published,
-              acquisition-focused pages.
+            <p className="max-w-xs text-sm text-muted-foreground leading-relaxed">
+              SEO pages on autopilot — from keyword research to published,
+              acquisition-focused pages. Built for solo founders and indie
+              builders.
             </p>
           </div>
 

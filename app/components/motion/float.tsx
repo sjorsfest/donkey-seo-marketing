@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "~/lib/utils";
 
 interface FloatProps {
@@ -20,6 +20,8 @@ export function Float({
   y = 10,
   rotate = 0,
 }: FloatProps) {
+  const reduceMotion = useReducedMotion();
+  if (reduceMotion) return <div className={cn(className)}>{children}</div>;
   return (
     <motion.div
       animate={{
@@ -46,6 +48,8 @@ interface BounceProps {
 }
 
 export function Bounce({ children, className, delay = 0 }: BounceProps) {
+  const reduceMotion = useReducedMotion();
+  if (reduceMotion) return <div className={cn(className)}>{children}</div>;
   return (
     <motion.div
       animate={{
@@ -71,6 +75,8 @@ interface WiggleProps {
 }
 
 export function Wiggle({ children, className, delay = 0 }: WiggleProps) {
+  const reduceMotion = useReducedMotion();
+  if (reduceMotion) return <div className={cn(className)}>{children}</div>;
   return (
     <motion.div
       animate={{
@@ -96,6 +102,8 @@ interface PopInProps {
 }
 
 export function PopIn({ children, className, delay = 0 }: PopInProps) {
+  const reduceMotion = useReducedMotion();
+  if (reduceMotion) return <div className={cn(className)}>{children}</div>;
   return (
     <motion.div
       initial={{ scale: 0.9, opacity: 0 }}

@@ -1,10 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { FadeIn } from "~/components/motion/fade-in";
-import { Float } from "~/components/motion/float";
 import { Button } from "~/components/ui/button";
-import { Card } from "~/components/ui/card";
 import { useAppConfig } from "~/context/appConfig";
 
 interface FinalCTAProps {
@@ -15,129 +13,103 @@ interface FinalCTAProps {
   socialProof?: string;
 }
 
+const TRUST = ["No credit card required", "Cancel anytime", "3 SEO pages free, forever"];
+
 export function FinalCTA({
   badge = "Join the herd",
   headline,
-  subheadline = "Stop wrestling with keyword research, briefs, writers, and publishing workflows. Let Donkey produce targeted SEO pages for your product, comparisons, use cases, and blog strategy while you build and sell.",
-  ctaText = "✨ Start free • 3 SEO pages on us",
-  socialProof = "Join solo founders and indie builders who've automated their SEO pipeline",
+  subheadline = "Stop wrestling with keyword research, briefs, writers, and publishing workflows. Let Donkey produce targeted SEO pages — product pages, comparisons, use cases, and a full blog strategy — while you build and sell.",
+  ctaText = "Start free · 3 SEO pages on us",
+  socialProof = "Built for solo founders and indie builders automating their SEO pipeline.",
 }: FinalCTAProps = {}) {
   const { appUrl } = useAppConfig();
 
   const defaultHeadline = (
     <>
       Ready to ship{" "}
-      <span className="text-outline-lg text-foreground text-primary">
-        SEO pages
-      </span>{" "}
-      on autopilot?
+      <span className="text-outline-hero text-yellow-400">SEO pages</span> on
+      autopilot?
     </>
   );
 
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section className="py-20 md:py-28">
       <div className="section-container">
-        <FadeIn>
-          <Card className="relative max-w-5xl mx-auto p-6 sm:p-8 md:p-12 lg:p-16 bg-gradient-to-br from-teal-400 via-teal-500 to-teal-600 border-4 border-outline shadow-[12px_12px_0_#1a1a1a] overflow-hidden">
-            {/* Animated Background Elements */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-10 left-10 w-20 h-20 bg-white rounded-full blur-xl animate-pulse" />
-              <div className="absolute bottom-10 right-10 w-32 h-32 bg-white rounded-full blur-xl animate-pulse delay-200" />
-              <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-teal-400 rounded-full blur-xl animate-pulse delay-100" />
-            </div>
+        <FadeIn direction="scale">
+          <div className="relative mx-auto max-w-5xl overflow-hidden rounded-[2rem] border-2 border-outline bg-gradient-to-br from-teal-500 via-teal-600 to-teal-700 p-8 text-center shadow-[12px_12px_0_#1a1a1a] sm:p-12 md:p-16">
+            {/* Decorative layers */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-grid-lines opacity-[0.12]"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-yellow-300/30 blur-3xl"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-20 -right-10 h-64 w-64 rounded-full bg-teal-300/30 blur-3xl"
+            />
+            {/* Sticker accents */}
+            <Sparkles
+              aria-hidden="true"
+              className="absolute left-8 top-10 size-7 text-yellow-300/80 tilt-1 hidden sm:block"
+            />
+            <Sparkles
+              aria-hidden="true"
+              className="absolute bottom-12 right-12 size-9 text-yellow-200/70 tilt-2 hidden sm:block"
+            />
 
-            <div className="relative z-10">
-              <div className="grid md:grid-cols-[1fr,auto] gap-8 items-center">
-                {/* Left Side - Content */}
-                <div className="space-y-6 text-center md:text-left">
-                  {/* Badge */}
-                  <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-outline shadow-[3px_3px_0_#1a1a1a]">
-                    <span className="text-2xl">🚀</span>
-                    <span className="font-display font-bold text-foreground text-sm">
-                      {badge}
+            <div className="relative mx-auto max-w-2xl">
+              {/* Badge */}
+              <span className="mx-auto inline-flex items-center gap-2 rounded-full border-2 border-outline bg-white px-4 py-2 font-display text-sm font-bold text-foreground shadow-[3px_3px_0_#1a1a1a]">
+                <Sparkles className="size-4 text-yellow-600" />
+                {badge}
+              </span>
+
+              {/* Headline */}
+              <h2 className="mt-6 font-display text-3xl font-bold leading-[1.1] text-white text-balance sm:text-4xl md:text-5xl lg:text-6xl">
+                {headline ?? defaultHeadline}
+              </h2>
+
+              {/* Subheadline */}
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/95 sm:text-lg">
+                {subheadline}
+              </p>
+
+              {/* CTA */}
+              <div className="mt-8 flex justify-center">
+                <Button
+                  size="xl"
+                  variant="secondary"
+                  className="group h-16 px-8 text-lg sm:text-xl md:px-12 pulse-glow"
+                  asChild
+                >
+                  <a href={appUrl}>
+                    {ctaText}
+                    <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
+                  </a>
+                </Button>
+              </div>
+
+              {/* Trust signals */}
+              <ul className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+                {TRUST.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-1.5 text-sm font-semibold text-white/95"
+                  >
+                    <span className="inline-flex size-5 items-center justify-center rounded-full bg-yellow-400 border-2 border-outline">
+                      <Check className="size-3 text-teal-950" strokeWidth={3} />
                     </span>
-                  </div>
+                    {item}
+                  </li>
+                ))}
+              </ul>
 
-                  {/* Headline */}
-                  <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                    {headline ?? defaultHeadline}
-                  </h2>
-
-                  {/* Subheadline */}
-                  <p className="text-base sm:text-lg md:text-xl text-white/95 leading-relaxed max-w-2xl">
-                    {subheadline}
-                  </p>
-
-                  {/* Social Proof */}
-                  <p className="text-sm text-white/90">
-                    {socialProof}
-                  </p>
-
-                  {/* CTA Buttons */}
-                  <div className="flex flex-col gap-4">
-                      <Button
-                        size="xl"
-                        variant="secondary"
-                        className="h-14 sm:h-16 md:h-20 px-6 sm:px-8 md:px-12 text-base sm:text-lg md:text-xl lg:text-2xl bg-white hover:bg-white/90 shadow-[6px_6px_0_#1a1a1a] hover:shadow-[4px_4px_0_#1a1a1a] pulse-glow"
-                        asChild
-                      >
-                        <a href={appUrl}>
-                          <span>{ctaText}</span>
-                        </a>
-                    </Button>
-
-
-                  {/* Trust Signals */}
-                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4 text-white/90 text-xs sm:text-sm">
-                    <div className="flex items-center gap-2">
-                      <svg
-                        className="w-5 h-5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      <span>No credit card required</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <svg
-                        className="w-5 h-5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      <span>Cancel anytime</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <svg
-                        className="w-5 h-5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      <span>3 SEO pages lifetime free</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              </div>
+              <p className="mt-5 text-sm text-white/80">{socialProof}</p>
             </div>
-          </Card>
+          </div>
         </FadeIn>
       </div>
     </section>

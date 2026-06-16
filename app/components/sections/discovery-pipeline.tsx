@@ -1,188 +1,138 @@
 "use client";
 
+import {
+  Hammer,
+  Handshake,
+  Layers,
+  Coffee,
+  Search,
+  FileText,
+  Link2,
+  Send,
+  Check,
+  Split,
+  type LucideIcon,
+} from "lucide-react";
+import { SectionHeader } from "~/components/ui/section-header";
 import { FadeIn } from "~/components/motion/fade-in";
+import { IconChip } from "~/components/ui/icon-chip";
+
+const YOU: { Icon: LucideIcon; title: string; desc: string }[] = [
+  { Icon: Hammer, title: "Build your product", desc: "Focus on what makes you different" },
+  { Icon: Handshake, title: "Close deals", desc: "Spend time on revenue, not content" },
+  { Icon: Layers, title: "Ship new features", desc: "Build what your customers ask for" },
+  { Icon: Coffee, title: "Take weekends off", desc: "SEO keeps running while you recharge" },
+];
+
+const DONKEY: { Icon: LucideIcon; title: string; desc: string }[] = [
+  { Icon: Search, title: "Finds thousands of keywords", desc: "AI surfaces high-value opportunities" },
+  { Icon: FileText, title: "Builds full SEO pages", desc: "In your brand voice, ready to publish" },
+  { Icon: Link2, title: "Adds internal links", desc: "Connects to your existing content" },
+  { Icon: Send, title: "Delivers to your CMS", desc: "Via API, webhook, or dashboard" },
+];
+
+function Row({
+  Icon,
+  title,
+  desc,
+  tone,
+  done,
+}: {
+  Icon: LucideIcon;
+  title: string;
+  desc: string;
+  tone: "yellow" | "teal";
+  done?: boolean;
+}) {
+  return (
+    <div className="flex items-center gap-4 rounded-2xl border-2 border-outline bg-white p-4 shadow-[3px_3px_0_#1a1a1a] transition-transform hover:-translate-y-0.5">
+      <IconChip tone={tone} size="sm" className="size-11">
+        <Icon strokeWidth={2.25} />
+      </IconChip>
+      <div className="min-w-0 flex-1">
+        <div className="font-display font-bold text-foreground leading-tight">
+          {title}
+        </div>
+        <div className="text-sm text-muted-foreground">{desc}</div>
+      </div>
+      {done && (
+        <span className="inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-teal-400 border-2 border-outline">
+          <Check className="size-3.5 text-teal-950" strokeWidth={3} />
+        </span>
+      )}
+    </div>
+  );
+}
 
 export function DiscoveryPipeline() {
   return (
-    <section className="py-20">
+    <section className="py-20 md:py-28">
       <div className="section-container">
-        <FadeIn className="text-center mb-12">
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            You build product. Donkey SEO builds traffic.
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Your SEO pages ship on autopilot, so you never choose between building product and growing traffic.
-          </p>
-        </FadeIn>
+        <SectionHeader
+          eyebrow="The trade you never have to make"
+          eyebrowIcon={<Split />}
+          title="You build the product. Donkey builds the traffic."
+          subtitle="Your SEO pages ship on autopilot, so you never have to choose between building product and growing traffic."
+          className="mb-14"
+        />
 
-        <FadeIn delay={0.2}>
-          <div className="max-w-6xl mx-auto">
-            {/* Split Screen Comparison */}
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Left Side - YOU */}
-              <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-3xl p-8 border-3 border-outline shadow-[6px_6px_0_#1a1a1a] hover:shadow-[8px_8px_0_#1a1a1a] hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all">
-                <div className="text-center mb-6">
-                  <div className="inline-flex items-center gap-2 bg-yellow-400 px-6 py-3 rounded-full border-2 border-outline shadow-[3px_3px_0_#1a1a1a]">
-                    <span className="text-3xl">👨‍💻</span>
-                    <span className="font-display font-bold text-foreground text-2xl">You</span>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="bg-white rounded-xl p-5 border-2 border-outline">
-                    <div className="flex items-start gap-3">
-                      <div className="text-3xl flex-shrink-0">🚀</div>
-                      <div>
-                        <div className="font-display font-bold text-foreground text-lg mb-1">
-                          Build your product
-                        </div>
-                        <div className="text-sm text-muted-foreground">
-                          Focus on what makes you different
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white rounded-xl p-5 border-2 border-outline">
-                    <div className="flex items-start gap-3">
-                      <div className="text-3xl flex-shrink-0">💰</div>
-                      <div>
-                        <div className="font-display font-bold text-foreground text-lg mb-1">
-                          Close deals
-                        </div>
-                        <div className="text-sm text-muted-foreground">
-                          Focus on revenue, not content
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white rounded-xl p-5 border-2 border-outline">
-                    <div className="flex items-start gap-3">
-                      <div className="text-3xl flex-shrink-0">🛠️</div>
-                      <div>
-                        <div className="font-display font-bold text-foreground text-lg mb-1">
-                          Ship new features
-                        </div>
-                        <div className="text-sm text-muted-foreground">
-                          Build what your customers need
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white rounded-xl p-5 border-2 border-outline">
-                    <div className="flex items-start gap-3">
-                      <div className="text-3xl flex-shrink-0">☕</div>
-                      <div>
-                        <div className="font-display font-bold text-foreground text-lg mb-1">
-                          Take weekends off
-                        </div>
-                        <div className="text-sm text-muted-foreground">
-                          SEO runs while you recharge
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-6 text-center">
-                  <div className="inline-flex items-center gap-2 text-yellow-600 font-display font-bold text-lg">
-                    <span>✌️</span>
-                    <span>Your time. Your priorities.</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Side - DONKEY */}
-              <div className="bg-gradient-to-br from-teal-400 to-teal-100 rounded-3xl p-8 border-3 border-outline shadow-[6px_6px_0_#1a1a1a] hover:shadow-[8px_8px_0_#1a1a1a] hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all relative overflow-hidden">
-                {/* Sparkles */}
-                <div className="absolute top-4 right-4 text-2xl animate-pulse">✨</div>
-                <div className="absolute bottom-4 left-4 text-2xl animate-pulse delay-100">⚡</div>
-
-                <div className="text-center mb-6 relative z-10">
-                  <div className="inline-flex items-center gap-2 bg-teal-50 px-6 py-3 rounded-full border-2 border-outline shadow-[3px_3px_0_#1a1a1a]">
-                    <span className="text-3xl">🫏</span>
-                    <span className="font-display font-bold text-foreground text-2xl">Donkey SEO</span>
-                  </div>
-                </div>
-
-                <div className="space-y-4 relative z-10">
-                  <div className="bg-white rounded-xl p-5 border-2 border-outline">
-                    <div className="flex items-start gap-3">
-                      <div className="text-3xl flex-shrink-0">🔍</div>
-                      <div>
-                        <div className="font-display font-bold text-foreground text-lg mb-1">
-                          Find thousands of keywords
-                        </div>
-                        <div className="text-sm text-muted-foreground">
-                          AI discovers high-value opportunities
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white rounded-xl p-5 border-2 border-outline">
-                    <div className="flex items-start gap-3">
-                      <div className="text-3xl flex-shrink-0">✍️</div>
-                      <div>
-                        <div className="font-display font-bold text-foreground text-lg mb-1">
-                          Build full SEO pages
-                        </div>
-                        <div className="text-sm text-muted-foreground">
-                          In your brand voice, ready to publish
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white rounded-xl p-5 border-2 border-outline">
-                    <div className="flex items-start gap-3">
-                      <div className="text-3xl flex-shrink-0">🔗</div>
-                      <div>
-                        <div className="font-display font-bold text-foreground text-lg mb-1">
-                          Add internal links
-                        </div>
-                        <div className="text-sm text-muted-foreground">
-                          Connects to your existing content
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white rounded-xl p-5 border-2 border-outline">
-                    <div className="flex items-start gap-3">
-                      <div className="text-3xl flex-shrink-0">🚀</div>
-                      <div>
-                        <div className="font-display font-bold text-foreground text-lg mb-1">
-                          Deliver to your CMS
-                        </div>
-                        <div className="text-sm text-muted-foreground">
-                          Via API, webhook, or dashboard
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-6 text-center relative z-10">
-                  <div className="inline-flex items-center gap-2 text-teal-700 font-display font-bold text-lg">
-                    <span>🤖</span>
-                    <span>100% automated</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom CTA */}
-            <div className="text-center mt-12">
-              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-100 to-teal-100 px-8 py-4 rounded-full border-3 border-outline shadow-[4px_4px_0_#1a1a1a]">
-                <span className="text-2xl">💡</span>
-                <span className="font-display font-bold text-foreground text-xl">
-                  Zero research. Zero writing. Zero busywork.
+        <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto items-stretch">
+          {/* YOU */}
+          <FadeIn direction="right">
+            <div className="flex h-full flex-col rounded-3xl border-2 border-outline bg-yellow-50 p-6 sm:p-7 shadow-[6px_6px_0_#1a1a1a]">
+              <div className="mb-6 flex items-center gap-3">
+                <span className="inline-flex items-center gap-2 rounded-full border-2 border-outline bg-yellow-400 px-4 py-2 shadow-[3px_3px_0_#1a1a1a]">
+                  <span className="font-display text-lg font-bold text-teal-950">You</span>
+                </span>
+                <span className="font-display text-sm font-bold text-foreground/70">
+                  Your time, your priorities
                 </span>
               </div>
+              <div className="flex flex-col gap-3">
+                {YOU.map((item) => (
+                  <Row key={item.title} {...item} tone="yellow" />
+                ))}
+              </div>
             </div>
+          </FadeIn>
+
+          {/* DONKEY */}
+          <FadeIn direction="left" delay={0.15}>
+            <div className="relative flex h-full flex-col overflow-hidden rounded-3xl border-2 border-outline bg-teal-100 p-6 sm:p-7 shadow-[6px_6px_0_#1a1a1a]">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-teal-300/50 blur-2xl"
+              />
+              <div className="relative mb-6 flex items-center gap-3">
+                <span className="inline-flex items-center gap-2 rounded-full border-2 border-outline bg-teal-900 px-4 py-2 shadow-[3px_3px_0_#1a1a1a]">
+                  <span className="font-display text-lg font-bold text-yellow-400">
+                    Donkey
+                  </span>
+                </span>
+                <span className="inline-flex items-center gap-1.5 font-display text-sm font-bold text-teal-800">
+                  <span className="relative flex size-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-500 opacity-75" />
+                    <span className="relative inline-flex size-2 rounded-full bg-teal-600" />
+                  </span>
+                  100% automated
+                </span>
+              </div>
+              <div className="relative flex flex-col gap-3">
+                {DONKEY.map((item) => (
+                  <Row key={item.title} {...item} tone="teal" done />
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* Bottom punchline */}
+        <FadeIn delay={0.2} className="mt-10 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border-2 border-outline bg-white px-6 py-3 shadow-[4px_4px_0_#1a1a1a]">
+            <span className="font-display text-base sm:text-xl font-bold text-foreground">
+              Zero research. Zero writing.{" "}
+              <span className="text-yellow-600">Zero busywork.</span>
+            </span>
           </div>
         </FadeIn>
       </div>

@@ -1000,3 +1000,101 @@
     border-radius: 0.7rem;
   }
 }
+
+/* ============================================
+   REMAKE 2026 — TEXTURE, RHYTHM & MOTION
+   ============================================ */
+
+/* Reusable brutalist shadow tokens (so JSX can use shadow-brutal / shadow-brutal-lg) */
+@theme {
+  --shadow-brutal-sm: 2px 2px 0 #1a1a1a;
+  --shadow-brutal: 4px 4px 0 #1a1a1a;
+  --shadow-brutal-lg: 6px 6px 0 #1a1a1a;
+  --shadow-brutal-xl: 8px 8px 0 #1a1a1a;
+  --color-coral: #ff8552;
+}
+
+/* Eyebrow label — the little pill that sits above every section headline */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid #1a1a1a;
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: #0f3d3e;
+  box-shadow: 3px 3px 0 #1a1a1a;
+}
+
+/* Dotted-grid texture for section backgrounds (adds depth without noise) */
+.bg-grid-dots {
+  background-image: radial-gradient(rgba(15, 61, 62, 0.10) 1.4px, transparent 1.4px);
+  background-size: 22px 22px;
+}
+
+.bg-grid-lines {
+  background-image:
+    linear-gradient(rgba(15, 61, 62, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 61, 62, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Marquee — used by the "ships to your stack" strip */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+/* Tiny rotations for a hand-placed "sticker" feel */
+.tilt-1 { transform: rotate(-2deg); }
+.tilt-2 { transform: rotate(1.5deg); }
+.tilt-3 { transform: rotate(-1deg); }
+
+/* Animated conic ring (for highlighted pricing / hero accents) */
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow { animation: spin-slow 8s linear infinite; }
+
+/* Icon chip base — branded container for lucide icons */
+.icon-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #1a1a1a;
+  box-shadow: 3px 3px 0 #1a1a1a;
+  border-radius: 0.9rem;
+}
+
+/* ============================================
+   GLOBAL REDUCED-MOTION GUARD (a11y)
+   Stops every decorative animation/transition
+   and smooth-scroll for users who ask for it.
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

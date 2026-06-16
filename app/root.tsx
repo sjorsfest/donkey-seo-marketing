@@ -15,7 +15,16 @@ import { BRAND_LOGO_URL, buildOrganizationJsonLd } from "./lib/seo";
 import { getAllPublishedArticles } from "./lib/blog-data.server";
 
 export async function loader() {
-  const latestPosts = await getAllPublishedArticles(30);
+  // The blog data lives in an external DB that may be unavailable. A failure
+  // here must never take down the marketing page — fall back to no posts so the
+  // blog section simply renders empty instead of throwing.
+  let latestPosts: Awaited<ReturnType<typeof getAllPublishedArticles>> = [];
+  try {
+    latestPosts = await getAllPublishedArticles(30);
+  } catch (error) {
+    console.error("Failed to load latest blog posts:", error);
+  }
+
   return {
     appUrl: process.env.APP_URL ?? "",
     latestPosts,

@@ -2,13 +2,21 @@ import type { Route } from "./+types/home";
 import { Navbar } from "~/components/layout/navbar";
 import { Footer } from "~/components/layout/footer";
 import { Hero } from "~/components/sections/hero";
-import { DiscoveryPipeline } from "~/components/sections/discovery-pipeline";
-import { SmartLinking } from "~/components/sections/smart-linking";
+import { HowItWorks } from "~/components/sections/how-it-works";
 import { Features } from "~/components/sections/features";
 import { Pricing } from "~/components/sections/pricing";
 import { FAQ } from "~/components/sections/faq";
 import { FinalCTA } from "~/components/sections/final-cta";
-import { PageTypes } from "~/components/sections/page-types";
+import { features } from "~/data/features";
+import { faqItems } from "~/data/faq";
+
+// Curated for the home page — value-first, not exhaustive. The full sets and the
+// parked sections (integration strip, stats band, you-vs-donkey, page types,
+// smart-linking) still live in the codebase and are one import away.
+const HOME_FEATURES = features.slice(0, 6);
+const HOME_FAQ = [0, 1, 2, 4, 5, 9]
+  .map((i) => faqItems[i])
+  .filter(Boolean);
 
 const SITE_URL = "https://www.donkeyseo.io";
 const SOCIAL_IMAGE_URL = `${SITE_URL}/og/og-image.png?v=8`;
@@ -65,12 +73,10 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <DiscoveryPipeline />
-        <PageTypes />
-        <SmartLinking />
-        <Features />
+        <HowItWorks />
+        <Features items={HOME_FEATURES} />
         <Pricing />
-        <FAQ />
+        <FAQ items={HOME_FAQ} />
         <FinalCTA />
       </main>
       <Footer />

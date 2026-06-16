@@ -1,89 +1,99 @@
 "use client";
 
-import { Badge } from "~/components/ui/badge";
+import { Scale, Trophy, BookOpen, Check, TrendingUp, type LucideIcon } from "lucide-react";
+
+// Illustrative product UI — shows the *outcome* (traffic up, pages live), not the machinery.
+const TRAFFIC_BARS = [26, 32, 29, 41, 48, 62, 76, 88];
+
+const PAGES: {
+  Icon: LucideIcon;
+  tone: string;
+  title: string;
+  status: "published" | "live";
+}[] = [
+  { Icon: Scale, tone: "bg-coral", title: "Notion vs Obsidian (2026)", status: "published" },
+  { Icon: Trophy, tone: "bg-yellow-400", title: "Best CRMs for startups", status: "published" },
+  { Icon: BookOpen, tone: "bg-teal-300", title: "How to automate your SEO", status: "live" },
+];
 
 export function DashboardMockup() {
-  const stats = [
-    { icon: "🔍", label: "Keywords", value: "1320", subtitle: "total keywords discovered" },
-    { icon: "📚", label: "Topics", value: "28", subtitle: "topic clusters identified" },
-    { icon: "🔄", label: "Discovery Loop", value: "1", subtitle: "iteration completed" },
-  ];
-
-  const pipelineSteps = ["Seeds", "Expansion", "Metrics", "Intent", "Clustering", "Prioritization", "SERP"];
-
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full max-w-md mx-auto">
       {/* Browser Window Frame */}
-      <div className="bg-white rounded-xl sm:rounded-2xl border-2 sm:border-4 border-outline shadow-[4px_4px_0_#1a1a1a] sm:shadow-[8px_8px_0_#1a1a1a] overflow-hidden">
+      <div className="bg-white rounded-2xl border-2 sm:border-4 border-outline shadow-[6px_6px_0_#1a1a1a] sm:shadow-[8px_8px_0_#1a1a1a] overflow-hidden">
         {/* Browser Top Bar */}
-        <div className="bg-gray-200 px-2 sm:px-4 py-2 sm:py-3 border-b-2 sm:border-b-4 border-outline flex items-center gap-2">
-          {/* macOS Window Controls */}
-          <div className="flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-500 border-2 border-red-600" />
-            <div className="w-3 h-3 rounded-full bg-yellow-500 border-2 border-yellow-600" />
-            <div className="w-3 h-3 rounded-full bg-green-500 border-2 border-green-600" />
+        <div className="flex items-center gap-2 border-b-2 sm:border-b-4 border-outline bg-gray-100 px-3 py-2.5">
+          <div className="flex gap-1.5">
+            <div className="size-3 rounded-full border-2 border-red-600 bg-red-500" />
+            <div className="size-3 rounded-full border-2 border-yellow-600 bg-yellow-500" />
+            <div className="size-3 rounded-full border-2 border-green-600 bg-green-500" />
           </div>
-          {/* URL Bar */}
-          <div className="flex-1 mx-4 bg-white rounded-lg px-4 py-1.5 border-2 border-gray-300">
-            <div className="text-xs text-gray-500 font-mono">app.donkeyseo.io</div>
+          <div className="mx-2 flex-1 rounded-lg border-2 border-gray-300 bg-white px-3 py-1">
+            <div className="font-mono text-xs text-gray-500">app.donkeyseo.io</div>
           </div>
         </div>
 
-        {/* Dashboard Content */}
-        <div className="p-3 sm:p-4 md:p-6">
-          {/* Header */}
-          <div className="mb-4 sm:mb-6">
-            <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-2">
-              Discovery
-            </h2>
-            <p className="text-xs sm:text-sm text-muted-foreground">
-              Keyword discovery, topic clustering, and loop iteration management.
-            </p>
-          </div>
-
-          {/* Stats Grid */}
-          <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-4 sm:mb-6">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="bg-gradient-to-br from-white to-teal-50 rounded-lg sm:rounded-2xl border-2 border-outline shadow-[2px_2px_0_#1a1a1a] sm:shadow-[4px_4px_0_#1a1a1a] p-2 sm:p-4 hover:shadow-[3px_3px_0_#1a1a1a] sm:hover:shadow-[6px_6px_0_#1a1a1a] hover:-translate-y-0.5 transition-all"
-              >
-                <div className="flex flex-col items-center text-center gap-1 sm:gap-2">
-                  <div className="text-2xl sm:text-4xl mb-0 sm:mb-1">{stat.icon}</div>
-                  <div className="font-display text-xl sm:text-3xl font-bold text-foreground">
-                    {stat.value}
-                  </div>
-                  <p className="text-[10px] sm:text-xs text-muted-foreground leading-tight hidden sm:block">
-                    {stat.subtitle}
-                  </p>
+        {/* Content */}
+        <div className="p-5 sm:p-6">
+          {/* Traffic — the value moment */}
+          <div className="rounded-2xl border-2 border-outline bg-teal-50 p-4 sm:p-5">
+            <div className="mb-4 flex items-start justify-between">
+              <div>
+                <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  Organic traffic
+                </div>
+                <div className="font-display text-2xl font-bold text-foreground">
+                  Growing on autopilot
                 </div>
               </div>
-            ))}
+              <span className="inline-flex items-center gap-1 rounded-full border-2 border-outline bg-teal-400 px-2.5 py-1 text-sm font-bold text-teal-950">
+                <TrendingUp className="size-4" strokeWidth={2.5} /> +42%
+              </span>
+            </div>
+            {/* Bar chart */}
+            <div className="flex h-24 items-end gap-1.5 sm:h-28">
+              {TRAFFIC_BARS.map((h, i) => (
+                <div
+                  key={i}
+                  className={`flex-1 rounded-t-md border-2 border-outline ${
+                    i >= TRAFFIC_BARS.length - 2 ? "bg-yellow-400" : "bg-teal-400"
+                  }`}
+                  style={{ height: `${h}%` }}
+                />
+              ))}
+            </div>
           </div>
 
-          {/* Pipeline Progress */}
-          <div className="bg-gradient-to-br from-teal-50 to-white rounded-lg sm:rounded-2xl border-2 border-outline p-3 sm:p-4">
-            <div className="flex items-center justify-between mb-3 sm:mb-4">
-              <h3 className="font-display text-[10px] sm:text-sm font-bold text-foreground tracking-wide">
-                DISCOVERY PROGRESS
-              </h3>
-              <Badge variant="success" size="sm" className="font-bold text-[10px] sm:text-xs">
-                100%
-              </Badge>
+          {/* Recently published — the hands-off outcome */}
+          <div className="mt-4">
+            <div className="mb-2.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Published for you this week
             </div>
-
-            {/* Pipeline Steps */}
-            <div className="relative flex items-center justify-between">
-              {/* Connection Line */}
-              <div className="absolute top-1.5 sm:top-2 left-0 right-0 h-0.5 sm:h-1 bg-teal-400/20 -z-10" />
-              <div className="absolute top-1.5 sm:top-2 left-0 w-full h-0.5 sm:h-1 bg-teal-400 -z-10" />
-
-              {pipelineSteps.map((step, index) => (
-                <div key={index} className="flex flex-col items-center gap-1 sm:gap-2">
-                  <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-teal-400 border-2 border-white shadow-sm" />
-                  <span className="text-[8px] sm:text-[10px] font-semibold text-foreground text-center leading-tight max-w-[40px] sm:max-w-[60px]">
-                    {step}
+            <div className="space-y-2.5">
+              {PAGES.map((page) => (
+                <div
+                  key={page.title}
+                  className="flex items-center gap-3 rounded-xl border-2 border-outline bg-white p-2.5 shadow-[2px_2px_0_#1a1a1a]"
+                >
+                  <span className={`${page.tone} icon-chip size-9 rounded-lg [&_svg]:size-5`}>
+                    <page.Icon className="text-teal-950" strokeWidth={2.5} />
                   </span>
+                  <span className="min-w-0 flex-1 truncate font-display text-sm font-bold text-foreground">
+                    {page.title}
+                  </span>
+                  {page.status === "published" ? (
+                    <span className="inline-flex shrink-0 items-center gap-1 rounded-full border-2 border-outline bg-teal-300 px-2 py-0.5 text-[11px] font-bold text-teal-950">
+                      <Check className="size-3" strokeWidth={3} /> Live
+                    </span>
+                  ) : (
+                    <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border-2 border-outline bg-yellow-100 px-2 py-0.5 text-[11px] font-bold text-teal-950">
+                      <span className="relative flex size-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-500 opacity-75" />
+                        <span className="relative inline-flex size-2 rounded-full bg-yellow-500" />
+                      </span>
+                      Publishing
+                    </span>
+                  )}
                 </div>
               ))}
             </div>

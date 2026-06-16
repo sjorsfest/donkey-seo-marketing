@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { cn } from "~/lib/utils";
 
 const containerVariants: Variants = {
@@ -44,6 +44,9 @@ export function StaggerContainer({
   initialDelay = 0.1,
   once = true,
 }: StaggerContainerProps) {
+  const reduceMotion = useReducedMotion();
+  if (reduceMotion) return <div className={cn(className)}>{children}</div>;
+
   const variants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -74,6 +77,8 @@ interface StaggerItemProps {
 }
 
 export function StaggerItem({ children, className }: StaggerItemProps) {
+  const reduceMotion = useReducedMotion();
+  if (reduceMotion) return <div className={cn(className)}>{children}</div>;
   return (
     <motion.div variants={itemVariants} className={cn(className)}>
       {children}

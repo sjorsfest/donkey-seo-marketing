@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { FadeIn } from "~/components/motion/fade-in";
+import { Check, Tag, ArrowRight } from "lucide-react";
+import { SectionHeader } from "~/components/ui/section-header";
 import { StaggerContainer, StaggerItem } from "~/components/motion/stagger";
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
-import { Badge } from "~/components/ui/badge";
+import { FadeIn } from "~/components/motion/fade-in";
 import { pricingPlans } from "~/data/pricing";
 import { useAppConfig } from "~/context/appConfig";
 
@@ -14,23 +14,25 @@ export function Pricing() {
   const [isYearly, setIsYearly] = useState(false);
 
   return (
-    <section id="pricing" className="py-20">
+    <section id="pricing" className="py-20 md:py-28">
       <div className="section-container">
-        <FadeIn className="text-center mb-12">
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            Pricing that scales with you
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            Start free. No credit card required. Cancel anytime.
-          </p>
+        <SectionHeader
+          eyebrow="Pricing"
+          eyebrowIcon={<Tag />}
+          title="Pricing that scales with you"
+          subtitle="Start free — no credit card required. Cancel anytime."
+          className="mb-8"
+        />
 
-          {/* Billing Toggle */}
-          <div className="inline-flex items-center gap-3 p-1 bg-card rounded-2xl border-2 border-outline shadow-[4px_4px_0_#1a1a1a]">
+        {/* Billing Toggle */}
+        <FadeIn className="flex justify-center mb-12">
+          <div className="inline-flex items-center gap-1 rounded-2xl border-2 border-outline bg-white p-1 shadow-[4px_4px_0_#1a1a1a]">
             <button
               onClick={() => setIsYearly(false)}
-              className={`px-8 py-3 rounded-xl font-semibold transition-all ${
+              aria-pressed={!isYearly}
+              className={`rounded-xl px-7 py-2.5 font-display font-bold transition-all ${
                 !isYearly
-                  ? "bg-yellow-500 text-foreground"
+                  ? "bg-yellow-500 text-teal-950 shadow-[2px_2px_0_#1a1a1a]"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
@@ -38,111 +40,119 @@ export function Pricing() {
             </button>
             <button
               onClick={() => setIsYearly(true)}
-              className={`px-8 py-3 rounded-xl font-semibold transition-all ${
+              aria-pressed={isYearly}
+              className={`flex items-center gap-2 rounded-xl px-7 py-2.5 font-display font-bold transition-all ${
                 isYearly
-                  ? "bg-yellow-500 text-foreground"
+                  ? "bg-yellow-500 text-teal-950 shadow-[2px_2px_0_#1a1a1a]"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
               Yearly
-              <span className="ml-2 text-xs bg-teal-400 text-foreground px-2 py-0.5 rounded-full">
+              <span className="rounded-full border-2 border-outline bg-teal-400 px-2 py-0.5 text-xs font-bold text-teal-950">
                 Save 32%
               </span>
             </button>
           </div>
         </FadeIn>
 
-        <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {pricingPlans.map((plan, index) => (
-            <StaggerItem key={index}>
-              <Card
-                className={`h-full relative flex flex-col ${
-                  plan.highlighted ? "ring-4 ring-yellow-500" : ""
-                }`}
-                variant={plan.highlighted ? "elevated" : "default"}
-              >
-                {plan.badge && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <Badge variant="promo" size="lg" className="shadow-[0_0_20px_rgba(255,214,65,0.4)]">{plan.badge}</Badge>
-                  </div>
-                )}
+        <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5 max-w-7xl mx-auto items-stretch">
+          {pricingPlans.map((plan, index) => {
+            const highlighted = plan.highlighted;
+            const price = isYearly ? plan.price.yearly : plan.price.monthly;
+            const monthlyEquiv =
+              isYearly && plan.price.yearly > 0
+                ? Math.round(plan.price.yearly / 12)
+                : null;
 
-                <CardHeader>
-                  <CardTitle className="text-center">
-                    <div className="text-sm text-muted-foreground mb-2">
-                      {plan.description}
+            return (
+              <StaggerItem key={index} className="h-full">
+                <div
+                  className={`relative flex h-full flex-col rounded-3xl border-2 border-outline bg-white transition-all ${
+                    highlighted
+                      ? "border-[3px] shadow-[8px_8px_0_#1a1a1a] lg:-translate-y-3 z-10"
+                      : "shadow-[5px_5px_0_#1a1a1a] hover:-translate-y-1 hover:shadow-[7px_7px_0_#1a1a1a]"
+                  }`}
+                >
+                  {/* Most popular ribbon */}
+                  {plan.badge && (
+                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border-2 border-outline bg-yellow-400 px-4 py-1 font-display text-xs font-bold text-teal-950 shadow-[3px_3px_0_#1a1a1a]">
+                      ★ {plan.badge}
                     </div>
-                    <div className="font-display text-3xl font-bold text-foreground">
-                      {plan.name}
-                    </div>
-                  </CardTitle>
-                </CardHeader>
+                  )}
 
-                <CardContent className="space-y-6 flex-1 flex flex-col">
-                  {/* Price */}
-                  <div className="text-center">
-                    <div className="flex items-baseline justify-center gap-1">
-                      <span className="text-4xl font-display font-bold text-foreground">
-                        €{isYearly ? plan.price.yearly : plan.price.monthly}
-                      </span>
-                      {plan.price.monthly > 0 && (
-                        <span className="text-muted-foreground">
-                          /{isYearly ? "year" : "month"}
+                  <div className="flex h-full flex-col p-6 pt-8">
+                    {/* Header */}
+                    <div className="text-center">
+                      <div className="text-sm font-semibold text-muted-foreground">
+                        {plan.description}
+                      </div>
+                      <div className="mt-1 font-display text-2xl font-bold text-foreground">
+                        {plan.name}
+                      </div>
+                    </div>
+
+                    {/* Price */}
+                    <div className="mt-5 text-center">
+                      <div className="flex items-baseline justify-center gap-1">
+                        <span className="font-display text-5xl font-bold text-foreground">
+                          €{price}
                         </span>
-                      )}
-                    </div>
-                    {plan.price.monthly === 0 && (
-                      <p className="text-sm text-muted-foreground mt-1">
-                        Forever
+                        {plan.price.monthly > 0 && (
+                          <span className="text-muted-foreground">
+                            /{isYearly ? "yr" : "mo"}
+                          </span>
+                        )}
+                      </div>
+                      <p className="mt-1 h-5 text-sm text-muted-foreground">
+                        {plan.price.monthly === 0
+                          ? "Free forever"
+                          : monthlyEquiv
+                            ? `≈ €${monthlyEquiv}/mo, billed yearly`
+                            : "billed monthly"}
                       </p>
-                    )}
-                  </div>
+                    </div>
 
-                  {/* Features */}
-                  <ul className="space-y-3 flex-1">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li
-                        key={featureIndex}
-                        className="flex items-start gap-2 text-sm"
-                      >
-                        <svg
-                          className="w-5 h-5 text-teal-400 flex-shrink-0 mt-0.5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
+                    {/* CTA */}
+                    <Button
+                      className="mt-6 w-full group"
+                      variant={highlighted ? "gradient" : "secondary"}
+                      size="lg"
+                      asChild
+                    >
+                      <a href={appUrl}>
+                        {plan.cta}
+                        <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                      </a>
+                    </Button>
+
+                    {/* Features */}
+                    <ul className="mt-6 space-y-3 border-t-2 border-dashed border-border pt-6">
+                      {plan.features.map((feature, featureIndex) => (
+                        <li
+                          key={featureIndex}
+                          className="flex items-start gap-2.5 text-sm"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                        <span className="text-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA Button */}
-                  <Button
-                    className="w-full mt-auto"
-                    variant={plan.highlighted ? "gradient" : "secondary"}
-                    size="lg"
-                    asChild
-                  >
-                    <a href={appUrl}>{plan.cta} →</a>
-                  </Button>
-                </CardContent>
-              </Card>
-            </StaggerItem>
-          ))}
+                          <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-teal-300 border-2 border-outline">
+                            <Check
+                              className="size-3 text-teal-950"
+                              strokeWidth={3}
+                            />
+                          </span>
+                          <span className="text-foreground">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </StaggerItem>
+            );
+          })}
         </StaggerContainer>
 
-        {/* Add-on Note */}
-        <FadeIn delay={0.4} className="text-center mt-8">
-          <p className="text-sm text-muted-foreground">
-            Need more SEO pages? Add-on available at €2 per page on any paid
-            plan.
+        <FadeIn delay={0.2} className="text-center mt-10">
+          <p className="inline-flex items-center gap-2 rounded-full border-2 border-outline bg-white px-5 py-2.5 text-sm font-semibold text-muted-foreground shadow-[3px_3px_0_#1a1a1a]">
+            <Tag className="size-4 text-teal-700" />
+            Need more pages? Add-on available at €2 per page on any paid plan.
           </p>
         </FadeIn>
       </div>

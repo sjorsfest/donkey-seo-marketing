@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { cn } from "~/lib/utils";
 
 const fadeInVariants: Variants = {
@@ -65,6 +65,8 @@ export function FadeIn({
   duration = 0.5,
   once = true,
 }: FadeInProps) {
+  const reduceMotion = useReducedMotion();
+
   const getVariants = (): Variants => {
     const easing: [number, number, number, number] = [0.22, 1, 0.36, 1];
     const baseTransition = {
@@ -103,6 +105,11 @@ export function FadeIn({
         return fadeInVariants;
     }
   };
+
+  // Respect prefers-reduced-motion: show content in place, no slide/scale.
+  if (reduceMotion) {
+    return <div className={cn(className)}>{children}</div>;
+  }
 
   return (
     <motion.div
